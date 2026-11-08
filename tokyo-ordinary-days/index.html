@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#131c32" />
+  <meta name="description" content="Tokyo Ordinary Days — เกมจำลองชีวิต 2D Pixel Art เล่นฟรีบนเว็บ" />
+  <title>Tokyo Ordinary Days v2 • 東京、ふつうの日々</title>
+  <style>
+:root{--page:#11192b;--page2:#1b2540;--panel:#202b46;--panel2:#26334d;--line:#34425e;--muted:#aab7cc;--ink:#f7f5ed;--coral:#f8bdab;--gold:#f1d19d;--mint:#9dd0bf;--blue:#a9bee6;--red:#f7a3a9;--shadow:0 15px 50px #050a1770}*{box-sizing:border-box}html{min-height:100%;background:var(--page)}body{margin:0;color:var(--ink);font:14px/1.6 system-ui,-apple-system,BlinkMacSystemFont,'Noto Sans Thai',sans-serif;background:radial-gradient(ellipse at 75% -20%,#394160a3,transparent 48%),linear-gradient(180deg,#171e32,#10182a);min-height:100vh}button,input,select{font:inherit}button{cursor:pointer;transition:background .16s,transform .16s,border-color .16s}button:hover{transform:translateY(-1px)}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}button:disabled{opacity:.43;cursor:not-allowed;transform:none}#app{max-width:1480px;margin:auto;padding:22px 36px 20px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid #3a4158;padding:0 0 20px}.brand{display:flex;gap:14px;align-items:center}.brand-icon{color:var(--gold);font-size:33px}.brand-title{font:700 19px/1.1 Georgia,serif;letter-spacing:2px}.brand-title em{color:var(--coral);font-style:italic;font-weight:400;letter-spacing:0}.brand-sub{font-size:10px;color:var(--muted);letter-spacing:1.1px;margin-top:5px}.brand-sub span{margin:0 8px}.top-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.quiet{background:#ffffff0b;border:1px solid #ffffff25;color:#e4e8f0;border-radius:7px;padding:8px 11px;font-size:12px}.quiet:hover{background:#ffffff19}.headline{display:flex;align-items:end;justify-content:space-between;padding:25px 0 20px;gap:14px}.eyebrow{letter-spacing:2.3px;font-size:10px;color:var(--coral);margin:0}.headline h1{font:normal 42px/1.2 Georgia,'Noto Sans Thai',serif;letter-spacing:.3px;margin:8px 0}.headline h1 span{color:var(--coral)}.headline p:not(.eyebrow){margin:0;color:var(--muted);font-size:13px}.calendar{background:#273450;min-width:144px;border:1px solid #455572;text-align:center;padding:8px 13px 10px;border-radius:9px;box-shadow:4px 4px 0 #0e1525}.calendar small,.calendar span{display:block;font:10px/1.4 ui-monospace,monospace;letter-spacing:1.3px;color:var(--muted)}.calendar b{display:block;font:700 43px/1.1 Georgia,serif;color:#ffe2b9}.statbar{display:grid;grid-template-columns:1.35fr repeat(4,1fr);gap:10px;margin-bottom:19px}.stat{background:#222e49;border:1px solid #36435e;padding:13px 15px;border-radius:8px;min-width:0}.stat small{display:block;font-size:11px;color:var(--muted);margin-bottom:4px}.stat strong{font:600 19px/1.2 ui-monospace,monospace;letter-spacing:.25px;overflow-wrap:anywhere}.stat .sublabel{font-size:10px;color:#96a9be;margin-top:4px}.stat.money strong{color:#f8d6a7}.stat.debt strong{color:#f4a7ae}.minibar{height:5px;border-radius:12px;background:#0d1526;margin-top:8px;overflow:hidden}.minibar i{display:block;height:100%;border-radius:12px;background:var(--mint);transition:width .2s}.layout{display:grid;grid-template-columns:minmax(0,1.52fr) minmax(370px,.95fr);align-items:start;gap:19px}.world,.panel{min-width:0}.scene-shell{background:#131f33;padding:11px;border:1px solid #526077;border-radius:12px;box-shadow:var(--shadow)}.scene-top{display:flex;align-items:center;justify-content:space-between;padding:2px 5px 10px;color:#d4dbe8;font-size:12px}.live-dot{display:inline-block;width:7px;height:7px;border-radius:100%;background:#aec8a0;margin-right:8px;box-shadow:0 0 0 3px #adc89b2b}.scene-weather{color:#d4c0a6}canvas{width:100%;aspect-ratio:16/9;display:block;background:#a3abb9;image-rendering:pixelated;border:4px solid #141c2e;border-radius:4px}.scene-bottom{display:flex;justify-content:space-between;gap:12px;padding:10px 5px 1px;color:#cad1dd;font-size:12px}.scene-corner{font:10px ui-monospace,monospace;letter-spacing:1px;color:#8793a7;white-space:nowrap}.locations{display:flex;gap:7px;padding:12px 0 14px;overflow-x:auto}.locations button{white-space:nowrap;border:1px solid #48546b;background:#222d48;color:#c8d2e4;font-size:12px;border-radius:7px;padding:9px 13px}.locations button.active{border-color:#e4be9c;background:#56424b;color:#fff1d9}.diary{background:#1e2943;border:1px solid #33415c;border-radius:10px;padding:16px 19px;min-height:185px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:11px}.section-head b{font-size:13px;font-weight:600}.section-head small{font:9px ui-monospace,monospace;letter-spacing:1.4px;color:#9ba8c0}.entry{padding:10px 0;border-top:1px solid #36435a;color:#d6dce6;font-size:12px;display:flex;gap:12px}.entry time{color:#e0b9a8;white-space:nowrap;font:11px ui-monospace,monospace;padding-top:3px}.entry em{font-style:normal;color:#e6c490}.panel{border:1px solid #3b4964;border-radius:10px;background:#202c48;overflow:hidden;box-shadow:var(--shadow)}.profile{padding:20px 22px;background:linear-gradient(110deg,#303954,#26354f);display:flex;align-items:center;gap:14px;border-bottom:1px solid #526079}.avatar-box{width:56px;height:60px;background:#20283e;border:2px solid #75849c;border-radius:6px;display:grid;place-items:center;flex-shrink:0}.avatar-box canvas{width:48px;height:48px;border:0;image-rendering:pixelated;background:transparent}.person-name{font:600 18px/1.3 Georgia,'Noto Sans Thai',serif}.person-sub{font-size:12px;color:#c4d2e5;margin-top:3px}.person-caption{font-size:11px;color:#e7c3a5;margin-top:4px}.panel-tabs{display:flex;background:#1b263f;border-bottom:1px solid #39445d}.panel-tabs button{border:0;border-bottom:2px solid transparent;background:transparent;color:#aebbd0;flex:1;padding:12px}.panel-tabs button.selected{border-color:var(--coral);color:#ffded0;font-weight:650;background:#ffffff0a}.panel-content{padding:18px 20px;min-height:470px}.panel-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.panel-heading h3{font:600 16px Georgia,'Noto Sans Thai',serif;margin:0}.panel-heading small{font:10px ui-monospace,monospace;color:#acbad1}.action-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.action{border:1px solid #3d5267;background:#2a3952;text-align:left;padding:12px 12px 11px;border-radius:9px;min-height:92px;color:#eef2f2;display:flex;flex-direction:column;gap:2px}.action:hover:not(:disabled){background:#364861;border-color:#79909e}.action .act-top{display:flex;gap:7px;align-items:center;font-size:13px;font-weight:600}.action .act-top .em{font-size:17px}.action .act-detail{font-size:10px;color:#b4c0d3;line-height:1.5}.action .act-cost{color:#f0caa7;font:11px ui-monospace,monospace;margin-top:auto}.progress-list{display:grid;gap:10px;margin:12px 0 18px}.progress-item .progress-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;color:#c7d0df}.progress-item .progress-label strong{font:12px ui-monospace,monospace;color:#e8e9ed}.progress-item .minibar{margin:0;height:6px}.progress-item:nth-child(2) .minibar i{background:#c8bbd9}.progress-item:nth-child(3) .minibar i{background:#e5c295}.progress-item:nth-child(4) .minibar i{background:#abc0dd}.hint{background:#1c2942;border:1px solid #3b4c67;padding:11px 13px;border-radius:8px;font-size:11px;color:#b7c6d5;line-height:1.7;margin:12px 0}.hint b{color:var(--gold)}.advance{background:#18253e;padding:16px 20px 15px;border-top:1px solid #3a4c64}.advance-top{display:flex;justify-content:space-between;gap:7px;align-items:center;margin-bottom:11px}.advance-top small{display:block;color:#8ea8bd;font-size:11px}.advance-top strong{font-weight:600;font-size:12px}.advance-top>span{font:10px ui-monospace,monospace;color:var(--gold);white-space:nowrap}.advance-actions{display:grid;grid-template-columns:1fr auto auto;gap:7px}.advance-actions button{border-radius:7px;padding:10px 11px;font-size:12px}.primary{color:#2e2631;background:#f3c5ac;border:1px solid #ffd4b8;font-weight:650}.primary:hover{background:#ffe1c7}.primary span{margin-left:7px}.secondary{color:#dce4ed;background:#2a3951;border:1px solid #536179}.secondary:hover{background:#374863}.fine{font-size:10px;color:#8b9bb4;margin:10px 0 0;line-height:1.5}.finance-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #36435b;font-size:12px}.finance-row span:last-child{font:12px ui-monospace,monospace;white-space:nowrap}.finance-total{font-weight:700;color:var(--gold)}.subhead{font-size:11px;color:var(--coral);letter-spacing:1.3px;margin:16px 0 9px;font-weight:700}.bank-box{display:flex;gap:7px;margin:12px 0}.bank-box input{min-width:0;width:100%;background:#131e34;border:1px solid #52647b;border-radius:6px;padding:9px;color:white}.bank-box button{white-space:nowrap;background:#40536b;color:#f9f4ed;border:1px solid #778399;border-radius:6px;padding:8px}.job{border:1px solid #455671;border-radius:8px;padding:12px 13px;margin-bottom:9px;background:#26354e}.job-name{font-weight:600;font-size:13px;display:flex;justify-content:space-between;gap:5px;align-items:center}.job-pay{font-size:12px;color:var(--gold)}.job small{display:block;font-size:11px;color:#adbbcd;margin:5px 0 9px}.job button{border:1px solid #67778e;background:#40546e;color:white;border-radius:5px;font-size:11px;padding:5px 10px}.job button:disabled{opacity:.4}.locked{color:#f0acb3!important}footer{text-align:center;margin:26px 0 4px;color:#8492aa;font:10px ui-monospace,monospace;letter-spacing:1px}.overlay{position:fixed;inset:0;z-index:30;background:#090d17c7;display:grid;place-items:center;padding:16px;overflow:auto;backdrop-filter:blur(6px)}.overlay[hidden]{display:none}.modal{width:min(560px,100%);max-height:calc(100vh - 30px);overflow:auto;padding:25px 30px;background:linear-gradient(145deg,#2a354f,#1d2943);border:1px solid #8190a3;border-radius:13px;box-shadow:0 20px 65px #000a;color:#eeeef0}.modal-deco{color:var(--gold);font:11px ui-monospace,monospace;letter-spacing:2px;text-align:center}.modal h2{font:normal 26px/1.3 Georgia,'Noto Sans Thai',serif;color:#ffe2bf;text-align:center;margin:13px 0 16px}.modal p{font-size:13px;color:#d3d9e4}.modal label{font-size:11px;color:#b5c1d2;display:block;margin-bottom:5px}.modal input,.modal select{width:100%;border:1px solid #60728d;border-radius:7px;padding:12px;background:#141f35;color:white;margin-bottom:14px}.modal-buttons{display:grid;gap:9px}.choice{width:100%;border:1px solid #63738a;text-align:left;border-radius:8px;padding:13px 15px;background:#303f59;color:#f4f3ef}.choice:hover{background:#435777;border-color:#edc49e}.choice strong{display:block;font-size:14px;margin-bottom:3px}.choice small{display:block;font-size:11px;color:#c3cad6}.choice.warn{border-color:#be8996}.modal-cta{border:1px solid #f2d8bd;border-radius:7px;background:#f3c8a7;color:#2c2934;padding:12px;font-weight:700;width:100%;margin-top:10px}.modal-cta:hover{background:#ffe0c5}.gender-pick{display:flex;gap:8px;margin-bottom:14px}.gender-pick button{flex:1;padding:10px;background:#1d2a42;border:1px solid #4c5b77;border-radius:7px;color:white}.gender-pick button.chosen{background:#5b4757;border-color:#e8c39d;color:#ffe0be}.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);z-index:40;background:#f4d9bb;color:#283247;padding:11px 18px;border-radius:8px;box-shadow:0 9px 30px #0008;opacity:0;pointer-events:none;transition:.2s;max-width:min(90vw,520px);text-align:center;font-size:12px}.toast.show{opacity:1;transform:translate(-50%,0)}@media(max-width:1040px){#app{padding:16px 20px}.layout{grid-template-columns:minmax(0,1fr)}.panel-content{min-height:auto}.action-grid{grid-template-columns:repeat(3,1fr)}.statbar{grid-template-columns:repeat(5,minmax(0,1fr))}.stat{padding:10px}.stat strong{font-size:16px}}@media(max-width:620px){#app{padding:14px 12px}.topbar{align-items:start}.brand-title{font-size:15px}.brand-sub{font-size:8px;letter-spacing:.25px}.top-actions{max-width:150px;gap:5px}.top-actions button{padding:5px;font-size:10px}.headline{align-items:center}.headline h1{font-size:28px}.headline p:not(.eyebrow){font-size:11px}.eyebrow{font-size:8px}.calendar{min-width:96px;padding:6px}.calendar b{font-size:29px}.calendar small,.calendar span{font-size:8px}.statbar{grid-template-columns:repeat(2,minmax(0,1fr))}.stat:first-child{grid-column:span 2}.stat strong{font-size:18px}.scene-shell{padding:5px}.scene-top,.scene-bottom{font-size:10px}.scene-corner{display:none}.scene-bottom{padding:7px}.locations button{padding:7px;font-size:11px}.panel-content{padding:14px 12px}.action-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.action{padding:10px 9px}.advance{padding:14px 12px}.advance-actions button{font-size:11px;padding:8px}.modal{padding:22px 17px}.modal h2{font-size:22px}}
+
+/* Update v2: responsive store, backup, active gameplay */
+.save-text{display:block;width:100%;height:160px;min-height:100px;resize:vertical;background:#10192c;border:1px solid #566d83;border-radius:7px;padding:12px;color:#e6dfcb;font:11px/1.6 ui-monospace,monospace;overflow:auto;user-select:text;-webkit-user-select:text} 
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #f8d4af;outline-offset:2px}
+.action:disabled{opacity:.46;cursor:not-allowed} .job button:disabled{cursor:not-allowed}
+@media(max-width:620px){.top-actions{max-width:none;justify-content:flex-end}.top-actions button{padding:6px 7px}.brand{flex:1 1 160px}.panel-tabs button{padding:12px 6px;font-size:11px}}
+
+/* Arrange mobile action controls before diary so the game is immediately usable. */
+@media(max-width:620px){
+ .topbar{flex-direction:column;align-items:stretch;gap:10px}.brand{flex:0 0 auto}.brand-sub{font-size:9px}.top-actions{justify-content:flex-start;width:100%;max-width:none}.top-actions button{font-size:11px}.layout{display:flex;flex-direction:column;gap:0}.world{display:contents}.scene-shell{order:1}.locations{order:2}.panel{order:3}.diary{order:4;margin-top:14px}.advance-actions{grid-template-columns:1fr 1fr 1fr 1fr}.advance-actions button{padding:9px 5px;font-size:10px}.advance-actions .primary{font-size:11px}.calendar{min-width:100px}
+}
+@media(min-width:621px){.advance-actions{grid-template-columns:1fr auto auto auto}}
+
+</style>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand"><span class="brand-icon">✦</span><div><div class="brand-title">TOKYO <em>ordinary days</em></div><div class="brand-sub">東京、ふつうの日々 <span>·</span> a little life in the big city</div></div></div>
+      <div class="top-actions">
+        <button class="quiet" id="musicBtn" title="เสียงเพลงบรรเลงต้นฉบับ">♫ เปิดเพลง</button>
+        <button class="quiet" id="guideBtn" title="วิธีเล่น">? วิธีเล่น</button>
+        <button class="quiet" id="saveBtn">↧ บันทึก</button>
+        <button class="quiet" id="exportBtn">⇧ สำรองเซฟ</button>
+        <button class="quiet" id="importBtn">⇩ นำเข้า</button>
+        <button class="quiet" id="newBtn">↺ เริ่มใหม่</button>
+      </div>
+    </header>
+
+    <section class="headline">
+      <div><p class="eyebrow">ONE LIFE • A THOUSAND LITTLE CHOICES</p><h1>อีกหนึ่งวัน <span>ในโตเกียว</span></h1><p>เริ่มเล่นได้ทันที — เลือกกิจกรรม ใช้ชีวิต สร้างอนาคต และบริหารเงินเยน</p></div>
+      <div class="calendar" id="calendar"><small>2026 / APR</small><b>01</b><span>WEDNESDAY · SPRING</span></div>
+    </section>
+
+    <section class="statbar" id="statbar" aria-label="สถานะชีวิต"></section>
+
+    <main class="layout">
+      <section class="world">
+        <div class="scene-shell">
+          <div class="scene-top"><div class="scene-title"><span class="live-dot"></span><span id="sceneLabel">ห้องนอน · 東京</span></div><div id="sceneWeather" class="scene-weather">☀ ฤดูใบไม้ผลิ</div></div>
+          <canvas id="world" width="480" height="270" aria-label="ภาพเกมพิกเซลชีวิตในโตเกียว"></canvas>
+          <div class="scene-bottom"><span id="sceneSubtitle">เลื่อนลงเพื่อเลือกกิจกรรม แล้วกดผ่านไปอีกหนึ่งวัน</span><span class="scene-corner">TOKYO · JAPAN</span></div>
+        </div>
+        <nav class="locations" id="locations" aria-label="สถานที่">
+          <button data-location="home" class="active">⌂ ห้องพัก</button><button data-location="school">▤ โรงเรียน</button><button data-location="street">▥ ย่านที่อยู่</button><button data-location="park">♧ สวนสาธารณะ</button><button data-location="work">▦ ที่ทำงาน</button>
+        </nav>
+        <div class="diary"><div class="section-head"><b>✎ บันทึกชีวิตประจำวัน</b><small>DAILY JOURNAL</small></div><div id="diary"></div></div>
+      </section>
+
+      <aside class="panel">
+        <div class="profile" id="profile"></div>
+        <div class="panel-tabs" id="panelTabs"><button class="selected" data-tab="daily">วันนี้</button><button data-tab="finance">การเงิน</button><button data-tab="future">อนาคต</button><button data-tab="shop">ของใช้</button></div>
+        <section class="panel-content" id="panelContent"></section>
+        <div class="advance"><div class="advance-top"><div><small>เวลาผ่านไปอย่างเงียบ ๆ</small><strong id="turnLabel">วันพุธที่ 1 เมษายน</strong></div><span id="actionCounter">2 กิจกรรม / วัน</span></div><div class="advance-actions"><button id="nextDay" class="primary">ผ่านไปอีกหนึ่งวัน <span>→</span></button><button id="nextWeek" class="secondary" title="ข้ามเวลา 7 วัน">+ 7 วัน</button><button id="nextMonth" class="secondary" title="ข้ามเวลา 30 วัน">+ 30 วัน</button><button id="nextYear" class="secondary" title="เดินเวลาไปสูงสุด 1 ปี หรือหยุดเมื่อมีเหตุการณ์">+ 1 ปี</button></div><p class="fine">เกมบันทึกอัตโนมัติเมื่อเบราว์เซอร์รองรับ · มีเมนูสำรองเซฟ · ตัวเลขค่าใช้จ่ายเป็นค่าประมาณในเกม</p></div>
+      </aside>
+    </main>
+    <footer>✦ TOKYO ORDINARY DAYS · ORIGINAL PIXEL ART & GENERATIVE INSTRUMENTAL MUSIC · BROWSER SIMULATION V2 • OFFLINE SINGLE FILE</footer>
+  </div>
+
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden><div class="modal"><div class="modal-deco">✦ A NEW PAGE OF LIFE ✦</div><h2 id="modalTitle"></h2><div id="modalBody"></div><div id="modalActions"></div></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+/* Tokyo Ordinary Days | Fully local browser prototype | No third-party services */
+'use strict';
+const $ = (id) => document.getElementById(id);
+const canvas = $('world');
+const ctx = canvas.getContext('2d', {alpha: false});
+ctx.imageSmoothingEnabled = false;
+const SAVE_KEY = 'tokyo-ordinary-days-v2';
+const OLD_SAVE_KEY = 'tokyo-ordinary-days-v1';
+const storage = (() => {try{return window.localStorage;}catch(e){return null;}})();
+const DAY = 86400000;
+const BEGIN = Date.UTC(2026, 3, 1);
+const weekdays = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
+const months = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+const monthsEN = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+const familyData = [
+  {name:'ครอบครัวรายได้น้อย',allowance:3000,support:6000,initial:3500,desc:'เงินไม่มากนัก แต่ความพยายามของคุณมีความหมาย'},
+  {name:'ครอบครัวชนชั้นแรงงาน',allowance:6500,support:15000,initial:10000,desc:'ครอบครัวคอยสนับสนุนเท่าที่ทำได้'},
+  {name:'ครอบครัวฐานะปานกลาง',allowance:11000,support:35000,initial:24000,desc:'เริ่มต้นได้สบายขึ้น แต่ชีวิตยังมีเรื่องให้ตัดสินใจ'},
+  {name:'ครอบครัวฐานะดี',allowance:21000,support:80000,initial:55000,desc:'มีโอกาสมากขึ้น แต่ไม่ได้หมายความว่าทุกอย่างจะง่าย'}
+];
+const jobData = [
+  {id:'shop',name:'พนักงานร้านสะดวกซื้อ',jp:'コンビニ店員',gross:244000,req:0,degree:false,description:'งานบริการ จัดสินค้า กะงานปกติ'},
+  {id:'food',name:'พนักงานร้านอาหาร',jp:'飲食スタッフ',gross:257000,req:15,degree:false,description:'บริการลูกค้าและครัว บางวันเหนื่อยมาก'},
+  {id:'office',name:'พนักงานออฟฟิศ',jp:'一般事務',gross:280000,req:43,degree:false,description:'งานธุรการ ต้องสื่อสารและจัดการข้อมูล'},
+  {id:'art',name:'นักออกแบบกราฟิก',jp:'デザイナー',gross:295000,req:62,degree:false,description:'สร้างสรรค์งาน ภาระงานเปลี่ยนไปตามโปรเจกต์'},
+  {id:'developer',name:'นักพัฒนาซอฟต์แวร์',jp:'ソフトウェア開発',gross:340000,req:76,degree:false,description:'แก้ปัญหาและพัฒนาระบบ ต้องฝึกทักษะ'},
+  {id:'research',name:'นักวิเคราะห์ข้อมูล',jp:'データアナリスト',gross:396000,req:86,degree:true,description:'ต้องมีทักษะสูงและจบการศึกษาต่อ'}
+];
+const actionData = [
+  {id:'study',icon:'▤',label:'อ่านหนังสือ',detail:'เพิ่มความรู้ · ใช้พลังงาน',cost:'พลังงาน -14'},
+  {id:'parttime',icon:'¥',label:'ทำงานพิเศษ 4 ชม.',detail:'ค่าจ้างชั่วโมงตามเกม',cost:'+¥4,920 · พลังงาน -23'},
+  {id:'rest',icon:'☾',label:'พักผ่อนที่ห้อง',detail:'คลายเครียดและเพิ่มพลัง',cost:'พลังงาน +30'},
+  {id:'social',icon:'♡',label:'ใช้เวลากับเพื่อน',detail:'สร้างความสัมพันธ์ดี ๆ',cost:'-¥1,200'},
+  {id:'explore',icon:'✿',label:'เดินเล่นในเมือง',detail:'สำรวจโตเกียว · ผ่อนคลาย',cost:'-¥700'},
+  {id:'hobby',icon:'♫',label:'งานอดิเรก / เกม',detail:'ความสุขเพิ่มขึ้น',cost:'-¥500'},
+  {id:'exercise',icon:'♧',label:'ออกกำลังกาย',detail:'ดูแลสุขภาพตัวเอง',cost:'ฟรี'},
+  {id:'cook',icon:'♨',label:'ทำอาหารเอง',detail:'ประหยัดค่าอาหารหนึ่งวัน',cost:'-¥550'},
+  {id:'training',icon:'✦',label:'ลงคอร์สเรียน',detail:'ฝึกทักษะเพื่ออาชีพ',cost:'-¥4,800'},
+  {id:'overtime',icon:'▣',label:'ทำโอที 3 ชั่วโมง',detail:'รายได้เพิ่ม แต่เหนื่อยและเครียด',cost:'เพิ่มรายได้ · พลังงาน -25'},
+  {id:'freelance',icon:'✎',label:'รับงานฟรีแลนซ์',detail:'ใช้ทักษะหารายได้เสริม',cost:'รายได้ตามความรู้'},
+  {id:'volunteer',icon:'❀',label:'ช่วยงานในชุมชน',detail:'รู้จักเพื่อนบ้านมากขึ้น',cost:'ฟรี · ความสัมพันธ์ +6'}
+];
+let s = null;
+let currentTab = 'daily';
+let currentLocation = 'home';
+let modalOpen = false;
+let frame = 0;
+let lastToast = null;
+let audio = null;
+let musicInterval = null;
+let musicOn = false;
+let musicStep = 0;
+const shopItems = [
+ {id:'plant',label:'ต้นไม้กระถางเล็ก',cost:2400,detail:'เพิ่มความสุขเล็กน้อยทุกวัน',emoji:'🪴'},
+ {id:'bed',label:'ฟูกนอนที่สบายขึ้น',cost:16000,detail:'พลังงานฟื้นมากขึ้นทุกวัน',emoji:'🛏'},
+ {id:'kitchen',label:'อุปกรณ์ทำครัว',cost:12000,detail:'ลดต้นทุนทำอาหารเอง',emoji:'🍳'},
+ {id:'bike',label:'จักรยานมือสอง',cost:18000,detail:'ลดค่าเดินทางวันทำงาน',emoji:'🚲'},
+ {id:'laptop',label:'โน้ตบุ๊กมือสอง',cost:65000,detail:'เพิ่มประสิทธิภาพอ่านหนังสือ',emoji:'💻'}
+];
+const hasItem = id => Array.isArray(s?.inventory) && s.inventory.includes(id);
+const yen = v => '¥' + Math.round(v).toLocaleString('ja-JP');
+const clamp = (v,min=0,max=100) => Math.max(min,Math.min(max,v));
+const esc = v => String(v).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pick = a => a[Math.floor(Math.random()*a.length)];
+const dateNow = () => new Date(BEGIN + s.day*DAY);
+const ageNow = () => {let d=dateNow();return d.getUTCFullYear()-2012-(d.getUTCMonth()<3?1:0);};
+const isStudent = () => ['junior','high','university','vocational'].includes(s.stage);
+const independent = () => ['university','vocational','adult'].includes(s.stage);
+const labelStage = () => ({junior:'มัธยมต้น',high:s.highTrack==='tech'?'มัธยมปลายสายเทคนิค':'มัธยมปลาย',university:'มหาวิทยาลัย',vocational:'วิทยาลัยอาชีพ',adult:'วัยทำงาน'})[s.stage];
+function family(){return familyData[s.family] || familyData[1];}
+function dateLabel(d=dateNow()) {return `${weekdays[d.getUTCDay()]}ที่ ${d.getUTCDate()} ${months[d.getUTCMonth()]} ${d.getUTCFullYear()}`;}
+function season(){let m=dateNow().getUTCMonth();return [11,0,1].includes(m)?'winter':[2,3,4].includes(m)?'spring':[5,6,7].includes(m)?'summer':'autumn';}
+function weather(){let m=dateNow().getUTCMonth(); let x=(s.day*41+Math.floor(s.day/7)*13)%17;return m===5&&x<7?'rain':x===1||x===9?'rain':'clear';}
+function toast(str){const el=$('toast');el.textContent=str;el.classList.add('show');clearTimeout(lastToast);lastToast=setTimeout(()=>el.classList.remove('show'),2400);}
+function write(str){if(!s)return;s.log.unshift({day:s.day,msg:str});s.log=s.log.slice(0,28);}
+function addMoney(amount,label){amount=Math.round(amount);s.cash+=amount;if(amount>0)s.monthIncome+=amount;else s.monthExpense-=amount;if(s.cash<0){let missing=-s.cash;s.cash=0;s.debt+=missing;write(`เงินสดไม่พอ ต้องกู้เพิ่ม ${yen(missing)} เพื่อจ่ายค่าใช้จ่าย`);}if(label)write(label);}
+function cost(amount,label){addMoney(-Math.max(0,amount),label);}
+function save(silent=true){if(!s)return;try{if(!storage)throw Error('storage unavailable');storage.setItem(SAVE_KEY,JSON.stringify(s));if(!silent)toast('บันทึกชีวิตเรียบร้อยแล้ว ✓');}catch(e){if(!silent)toast('บันทึกอัตโนมัติไม่ได้ โปรดกดสำรองเซฟ');}}
+function fresh(name='ฮารุ',gender='female',skipWelcome=false){
+  const r=Math.random();let f=r<.23?0:r<.6?1:r<.89?2:3;
+  s={version:2,inventory:[],lifestyle:'normal',name:name.trim().slice(0,24)||'ฮารุ',gender,family:f,day:0,stage:'junior',highTrack:null,degree:null,highSchool:null,job:null,monthsWorked:0,salaryBonus:0,home:'family',rent:0,cash:familyData[f].initial,savings:0,debt:0,studentLoan:false,energy:84,happiness:70,stress:15,health:90,knowledge:19,relationships:43,experience:0,actions:0,mealCover:0,monthIncome:0,monthExpense:0,lastMonthKey:'',history:[],log:[],pending:null,pendingPhase:null,eventsShown:0,promotions:0,employedDays:0};
+  write('วันแรกของบทใหม่ในโตเกียว คุณอายุ 14 ปี และกำลังเรียนมัธยมต้น');
+  write(`พื้นฐานครอบครัวที่สุ่มได้: ${family().name} · เงินตั้งต้น ${yen(s.cash)}`);
+  monthlyStart();render();save();if(!skipWelcome)showWelcome();
+}
+function monthlyStart(){
+  const d=dateNow();const key=`${d.getUTCFullYear()}-${d.getUTCMonth()}`;
+  if(s.lastMonthKey===key)return;
+  if(s.lastMonthKey){s.history.unshift({month:s.lastMonthKey,income:s.monthIncome,expense:s.monthExpense,cash:s.cash});s.history=s.history.slice(0,12);}
+  s.monthIncome=0;s.monthExpense=0;s.lastMonthKey=key;
+  if(s.stage==='junior'||s.stage==='high')addMoney(family().allowance,`ครอบครัวให้เงินประจำเดือน ${yen(family().allowance)}`);
+  if(s.stage==='university'||s.stage==='vocational'){
+    addMoney(family().support,`ครอบครัวช่วยค่าใช้จ่าย ${yen(family().support)}`);
+    let tuition=s.stage==='university'?47000:82000;
+    cost(tuition,`ค่าเรียนเฉลี่ยรายเดือน ${yen(tuition)}`);
+    if(s.studentLoan){s.debt+=60000;addMoney(60000,'ได้รับเงินกู้เพื่อการศึกษา ¥60,000 (เพิ่มยอดหนี้)');}
+  }
+  if(independent()){
+    cost(s.rent,`ค่าเช่าที่พัก ${yen(s.rent)}`);
+    cost(9500,'ค่าน้ำ ค่าไฟ ค่าแก๊ส ¥9,500');
+    cost(4500,'ค่าโทรศัพท์ / อินเทอร์เน็ต ¥4,500');
+    if(s.stage==='adult'&&!s.job) cost(13000,'เงินสำรองประกัน/เงินสมทบระหว่างไม่มีงาน ¥13,000');
+  }
+  if(s.debt>0){let interest=Math.round(s.debt*(s.stage==='adult'?.0025:.0005));if(interest){s.debt+=interest;write(`ดอกเบี้ยหนี้จำลอง ${yen(interest)} ถูกบวกในยอดคงค้าง`);}}
+}
+function dailyTick(){
+  let d=dateNow(),w=d.getUTCDay(),weekday=w!==0&&w!==6,student=isStudent();
+  if(student&&weekday){s.knowledge=clamp(s.knowledge+.028);s.energy=clamp(s.energy-2.8);s.stress=clamp(s.stress+.35);}
+  if(s.stage==='adult'&&s.job&&weekday){s.experience=clamp(s.experience+.037);s.energy=clamp(s.energy-3.8);s.stress=clamp(s.stress+.55);s.employedDays++;}
+  if(!weekday){s.energy=clamp(s.energy+7);s.stress=clamp(s.stress-2);s.happiness=clamp(s.happiness+1.3);}else{s.energy=clamp(s.energy+4.2);}
+  s.happiness=clamp(s.happiness-.11 - (s.stress>75?.12:0));
+  s.stress=clamp(s.stress-.2);
+  if(s.energy<14||s.stress>85)s.health=clamp(s.health-.35);else if(s.energy>65&&s.stress<40)s.health=clamp(s.health+.075);
+  if(independent()){
+    let dailyFood=s.mealCover>0?480:s.lifestyle==='frugal'?930:s.lifestyle==='comfortable'?2350:1450;
+    cost(dailyFood,null);
+    if(s.mealCover>0)s.mealCover--;
+    if(weekday)cost(hasItem('bike')?90:(s.stage==='adult'?440:250),null);
+  }
+  if(d.getUTCDate()===25&&s.stage==='adult'&&s.job){
+    const job=jobData.find(x=>x.id===s.job);
+    let gross=job.gross+s.salaryBonus;
+    let deductions=Math.round(gross*(gross>355000?.245:gross>285000?.225:.195));
+    addMoney(gross-deductions,`เงินเดือน ${yen(gross)} ก่อนหัก · เงินเข้าจริง ${yen(gross-deductions)}`);
+  }
+  if(d.getUTCDate()===1&&s.stage==='adult'&&s.job){
+    s.monthsWorked++;
+    if(s.monthsWorked>0&&s.monthsWorked%12===0){let raise=5000+Math.round(s.knowledge*42);s.salaryBonus+=raise;s.promotions++;write(`ครบรอบทำงานหนึ่งปี! ปรับฐานเงินเดือนเพิ่ม ${yen(raise)}/เดือน`);}
+  }
+  if(d.getUTCDate()===1&&s.debt>200000&&s.stage==='adult'&&s.cash>150000){write('อย่าลืมว่าคุณสามารถใช้เงินสดคืนหนี้บางส่วนได้ในเมนูการเงิน');}
+  if(hasItem('bed'))s.energy=clamp(s.energy+1.5);
+  if(hasItem('plant'))s.happiness=clamp(s.happiness+.18);
+  if(independent()&&s.lifestyle==='frugal')s.happiness=clamp(s.happiness-.12);
+  if(independent()&&s.lifestyle==='comfortable')s.happiness=clamp(s.happiness+.19);
+  s.actions=0;
+}
+function checkPhase(){let a=ageNow();
+  if(s.stage==='junior'&&a>=15){s.pendingPhase='high';showPhase('high');return true;}
+  if(s.stage==='high'&&a>=18){s.pendingPhase='afterhigh';showPhase('afterhigh');return true;}
+  if(s.stage==='vocational'&&a>=20){s.pendingPhase='graduate';showPhase('graduate');return true;}
+  if(s.stage==='university'&&a>=22){s.pendingPhase='graduate';showPhase('graduate');return true;}
+  return false;
+}
+function advance(days){if(!s||modalOpen)return;
+  let actual=0;
+  for(let i=0;i<days;i++){
+    s.day++;actual++;
+    if(checkPhase())break;
+    if(dateNow().getUTCDate()===1){monthlyStart();if(s.pending)break;if(s.day>0&&s.eventsShown<999&&Math.random()<.53){chooseEvent();if(s.pending)break;}}
+    dailyTick();
+  }
+  if(actual>=7)write(`เวลาเดินผ่านไป ${actual} วัน ชีวิตก็เปลี่ยนทีละน้อย`);
+  render();save();
+}
+function graduateTrack(choice){
+  s.pendingPhase=null;
+  if(choice==='high-general'||choice==='high-tech'){
+    s.stage='high';s.highTrack=choice==='high-tech'?'tech':'general';s.knowledge=clamp(s.knowledge+(s.highTrack==='tech'?3:1));
+    write(s.highTrack==='tech'?'เลือกเรียนมัธยมปลายสายเทคนิค':'เลือกเรียนมัธยมปลายสายสามัญ');
+  }else if(choice==='university'||choice==='vocational'){
+    s.stage=choice;s.degree=null;s.home='share';s.rent=59000;s.studentLoan=false;
+    if(choice==='university'){s.knowledge=clamp(s.knowledge+3);write('เข้ามหาวิทยาลัยและย้ายมาแชร์ห้องพักในโตเกียว');}
+    else{write('เริ่มเรียนวิทยาลัยอาชีพและใช้ชีวิตอย่างอิสระมากขึ้น');}
+  }else if(choice==='work'||choice==='graduate'){
+    if(choice==='graduate'){s.degree='completed';s.knowledge=clamp(s.knowledge+(s.stage==='university'?10:6));write('เรียนจบแล้ว! เส้นทางวัยทำงานเริ่มต้นขึ้น');}
+    s.stage='adult';s.studentLoan=false;s.home='small';s.rent=78000;s.job=null;s.salaryBonus=0;s.monthsWorked=0;
+    write('เริ่มต้นชีวิตวัยทำงาน ค่าเช่าและค่าครองชีพต้องจ่ายด้วยตัวเอง');
+  }
+  closeModal();
+  if(dateNow().getUTCDate()===1)monthlyStart();
+  render();save();
+  if(s.stage==='adult')setTimeout(()=>showCareerIntro(),160);
+}
+function canAction(id){if(s.actions>=2)return 'วันนี้ทำกิจกรรมครบแล้ว';if(id==='parttime'&&!['high','vocational','university'].includes(s.stage))return 'รับงานพิเศษได้ตั้งแต่มัธยมปลาย';if(id==='training'&&s.stage!=='adult')return 'สำหรับวัยทำงาน';if(id==='freelance'&&(s.stage!=='adult'||s.knowledge<35))return 'ต้องวัยทำงานและมีทักษะอย่างน้อย 35';if(id==='overtime'&&(!s.job||s.stage!=='adult'))return 'ต้องมีงานประจำก่อน';if(['study','parttime','overtime','training','exercise','freelance'].includes(id)&&s.energy<15)return 'พลังงานไม่พอ';return null;}
+function doAction(id){if(!s||modalOpen)return;let blocked=canAction(id);if(blocked){toast(blocked);return;}
+  let result='';
+  switch(id){
+    case 'study':s.knowledge=clamp(s.knowledge+(s.stage==='adult'?2.2:1.5)+(hasItem('laptop')?.7:0));s.energy=clamp(s.energy-14);s.stress=clamp(s.stress+4);result='อ่านหนังสือเงียบ ๆ ที่โต๊ะริมหน้าต่าง ความรู้ค่อย ๆ เพิ่มขึ้น';currentLocation='home';break;
+    case 'parttime':{let rate=1230+(s.knowledge>65?60:0),hours=4;addMoney(rate*hours,`ค่าจ้างงานพิเศษ ${hours} ชั่วโมง × ${yen(rate)}`);s.energy=clamp(s.energy-23);s.stress=clamp(s.stress+5);s.experience=clamp(s.experience+.33);currentLocation='work';result='จบกะพิเศษ ได้ค่าจ้างจริง ๆ แต่ก็เหนื่อยพอสมควร';break;}
+    case 'rest':s.energy=clamp(s.energy+30);s.stress=clamp(s.stress-10);s.happiness=clamp(s.happiness+5);result='ได้พักในห้องที่คุ้นเคย เสียงเมืองนอกหน้าต่างยังดำเนินไป';currentLocation='home';break;
+    case 'social':cost(1200,'ไปพบเพื่อน ค่าเดินทางและเครื่องดื่ม ¥1,200');s.relationships=clamp(s.relationships+5);s.happiness=clamp(s.happiness+9);s.energy=clamp(s.energy-5);s.stress=clamp(s.stress-5);result='หัวเราะกับเพื่อนจนลืมเวลา คืนนี้น่าจะนอนหลับสบาย';currentLocation='street';break;
+    case 'explore':cost(700,'ค่าเดินทางและของกินระหว่างเดินเล่น ¥700');s.happiness=clamp(s.happiness+8);s.stress=clamp(s.stress-8);s.energy=clamp(s.energy-7);result='เดินผ่านร้านเล็ก ๆ และแสงไฟในซอยของโตเกียว';currentLocation='street';break;
+    case 'hobby':cost(500,'ค่าใช้จ่ายงานอดิเรก ¥500');s.happiness=clamp(s.happiness+12);s.stress=clamp(s.stress-7);s.energy=clamp(s.energy-4);result='หนึ่งชั่วโมงกับสิ่งที่ชอบ ทำให้วันธรรมดาดีขึ้นได้';currentLocation='home';break;
+    case 'exercise':s.health=clamp(s.health+3);s.energy=clamp(s.energy-13);s.stress=clamp(s.stress-10);s.happiness=clamp(s.happiness+4);result='วิ่งออกกำลังกายที่สวน ลมเย็นช่วยให้หัวโล่ง';currentLocation='park';break;
+    case 'cook':cost(hasItem('kitchen')?340:550,hasItem('kitchen')?'ทำอาหารด้วยอุปกรณ์พร้อม ¥340':'ซื้อวัตถุดิบทำอาหารเอง ¥550');s.mealCover=1;s.happiness=clamp(s.happiness+3);s.energy=clamp(s.energy-7);result='เตรียมอาหารไว้กินพรุ่งนี้ ประหยัดกว่าซื้อข้าวนอกบ้าน';currentLocation='home';break;
+    case 'training':cost(4800,'ชำระคอร์สเรียนทักษะ ¥4,800');s.knowledge=clamp(s.knowledge+3.2);s.energy=clamp(s.energy-15);s.stress=clamp(s.stress+3);result='ได้เรียนรู้ทักษะใหม่ ๆ อาจช่วยในการเปลี่ยนอาชีพ';currentLocation='home';break;
+    case 'overtime':{const job=jobData.find(j=>j.id===s.job);let pay=Math.round((job.gross+s.salaryBonus)/160*1.25*3*.8);addMoney(pay,`รายได้โอทีสุทธิประมาณ ${yen(pay)}`);s.energy=clamp(s.energy-25);s.stress=clamp(s.stress+10);s.health=clamp(s.health-.7);result='กลับบ้านช้ากว่าปกติ รายได้เพิ่มขึ้น แต่เวลาพักผ่อนหายไป';currentLocation='work';break;}
+    case 'freelance':{let pay=Math.round(2500+s.knowledge*75);addMoney(pay,`ค่าจ้างงานฟรีแลนซ์ ${yen(pay)}`);s.energy=clamp(s.energy-23);s.stress=clamp(s.stress+6);s.experience=clamp(s.experience+.7);currentLocation='work';result=`ส่งงานฟรีแลนซ์เรียบร้อย ได้รับ ${yen(pay)}`;break;}
+    case 'volunteer':s.energy=clamp(s.energy-12);s.relationships=clamp(s.relationships+6);s.happiness=clamp(s.happiness+4);s.knowledge=clamp(s.knowledge+.3);currentLocation='park';result='ไปช่วยกิจกรรมละแวกบ้าน ได้รู้จักเพื่อนใหม่';break;
+    default:return;
+  }
+  s.actions++;write(result);render();save();toast(result);
+}
+function savingsTransfer(which){let field=$('bankAmount');if(!field)return;let amt=Math.floor(Number(field.value));if(!Number.isFinite(amt)||amt<=0){toast('กรอกจำนวนเงินที่มากกว่า 0 เยน');return;}
+  if(which==='deposit'){if(amt>s.cash){toast('เงินสดไม่พอ');return;}s.cash-=amt;s.savings+=amt;write(`ฝากเงินออม ${yen(amt)}`);}
+  if(which==='withdraw'){if(amt>s.savings){toast('เงินออมไม่พอ');return;}s.cash+=amt;s.savings-=amt;write(`ถอนเงินออม ${yen(amt)}`);}
+  if(which==='repay'){if(amt>s.cash||amt>s.debt){toast('ยอดเงินสดหรือยอดหนี้ไม่เพียงพอ');return;}s.cash-=amt;s.debt-=amt;write(`ชำระหนี้ ${yen(amt)}`);}
+  render();save();toast('ดำเนินการเรียบร้อย');
+}
+function setLoan(){if(!['vocational','university'].includes(s.stage))return;s.studentLoan=!s.studentLoan;write(s.studentLoan?'เปิดรับเงินกู้การศึกษา ¥60,000/เดือน (เพิ่มยอดหนี้)':'หยุดรับเงินกู้การศึกษาตั้งแต่เดือนถัดไป');render();save();}
+function setHome(type){if(!independent())return;let costs={share:59000,small:78000,cozy:114000};if(!costs[type])return;
+ s.home=type;s.rent=costs[type];s.happiness=clamp(s.happiness+(type==='cozy'?6:type==='share'?-2:1));write(`เปลี่ยนที่พักเป็น ${type==='share'?'แชร์ห้อง':type==='small'?'ห้องสตูดิโอ':'ห้องกว้างใกล้สถานี'} ค่าเช่า ${yen(s.rent)}/เดือน`);render();save();toast('ย้ายที่พักแล้ว ค่าเช่าใหม่เริ่มเดือนถัดไป');
+}
+function startJob(id){let j=jobData.find(x=>x.id===id);if(s.stage!=='adult'||!j)return;let allowed=s.knowledge>=j.req&&(!j.degree||s.degree==='completed');if(!allowed){toast('คุณสมบัติหรือความรู้ยังไม่ถึง');return;}
+ if(s.job===j.id){toast('คุณทำงานนี้อยู่แล้ว');return;}
+ s.job=j.id;s.salaryBonus=0;s.monthsWorked=0;write(`เริ่มทำงานเป็น${j.name} เงินเดือนก่อนหัก ${yen(j.gross)}`);currentLocation='work';render();save();toast(`ได้งาน ${j.name} แล้ว! เงินเดือนจ่ายทุกวันที่ 25`);
+}
+function showModal(title,body,choices){modalOpen=true;$('modalTitle').textContent=title;$('modalBody').innerHTML=body;$('modalActions').innerHTML='';const holder=document.createElement('div');holder.className='modal-buttons';choices.forEach(c=>{let b=document.createElement('button');b.className='choice'+(c.warn?' warn':'');b.innerHTML=`<strong>${esc(c.title)}</strong>${c.note?`<small>${esc(c.note)}</small>`:''}`;b.addEventListener('click',c.act);holder.appendChild(b);});$('modalActions').appendChild(holder);$('overlay').hidden=false;}
+function closeModal(){$('overlay').hidden=true;modalOpen=false;}
+function showWelcome(){showModal('ยินดีต้อนรับสู่ชีวิตใหม่',`<p>คุณชื่อ <b>${esc(s.name)}</b> อายุ 14 ปี อาศัยอยู่ในโตเกียว และเริ่มชีวิตด้วยพื้นฐานครอบครัวที่ระบบสุ่มให้</p><div class="hint"><b>${esc(family().name)}</b><br>${esc(family().desc)}<br>เงินสดเริ่มต้น ${yen(s.cash)} · เงินที่ครอบครัวให้ ${yen(family().allowance)}/เดือน</div><p>เลือกเรียน ทำงาน พักผ่อน พบเพื่อน และบริหารเงินด้วยตัวเอง ไม่มีภารกิจบังคับ เส้นทางชีวิตจะแตกต่างตามสิ่งที่คุณเลือก</p>`,[{title:'เริ่มใช้ชีวิตในโตเกียว →',act:closeModal}]);}
+function showPhase(kind){
+ if(kind==='high')showModal('อายุ 15 ปี · เลือกทางเรียน',`<p>คุณจบมัธยมต้นแล้ว ถึงเวลาตัดสินใจว่าจะใช้ชีวิตช่วงต่อไปอย่างไร</p><div class="hint">ผลลัพธ์ไม่ตายตัว คุณยังเลือกเรียนต่อหรือเปลี่ยนเส้นทางได้เมื่อโตขึ้น</div>`,[
+  {title:'มัธยมปลายสายสามัญ',note:'เน้นความรู้ทั่วไป เตรียมพร้อมสำหรับมหาวิทยาลัย',act:()=>graduateTrack('high-general')},
+  {title:'มัธยมปลายสายเทคนิค',note:'เน้นวิชาประยุกต์และทักษะการทำงาน',act:()=>graduateTrack('high-tech')}
+ ]);
+ if(kind==='afterhigh')showModal('อายุ 18 ปี · ทางแยกครั้งใหญ่',`<p>เรียนจบมัธยมปลายแล้ว คุณจะเลือกเส้นทางไหน? ไม่มีคำตอบถูกผิด แต่การใช้เงินและโอกาสทำงานจะต่างกัน</p><div class="hint">ความรู้ปัจจุบัน ${s.knowledge.toFixed(1)}/100 · เงินสด ${yen(s.cash)} · ครอบครัวช่วยเหลือได้ ${yen(family().support)}/เดือน</div>`,[
+  {title:'มหาวิทยาลัย (4 ปี)',note:'ค่าเรียนเฉลี่ย ¥47,000/เดือน + ค่าเช่า · เพิ่มโอกาสอาชีพ',act:()=>graduateTrack('university')},
+  {title:'วิทยาลัยอาชีพ (2 ปี)',note:'ค่าเรียนเฉลี่ย ¥82,000/เดือน + ค่าเช่า · เรียนจบไว',act:()=>graduateTrack('vocational')},
+  {title:'เริ่มทำงานทันที',note:'มีรายได้เร็วขึ้น ไม่ต้องจ่ายค่าเรียนต่อ',act:()=>graduateTrack('work')}
+ ]);
+ if(kind==='graduate')showModal('วันสำเร็จการศึกษา',`<p>หลายปีผ่านไป คุณจบ${labelStage()}แล้ว ถึงเวลาพบโลกของการทำงานอย่างเต็มตัว</p><p>ความรู้ปัจจุบัน: <b>${s.knowledge.toFixed(1)}/100</b> · หนี้ที่ต้องจัดการ: <b>${yen(s.debt)}</b></p>`,[{title:'ก้าวเข้าสู่วัยทำงาน →',act:()=>graduateTrack('graduate')}]);
+}
+function showCareerIntro(){showModal('หางานแรกในโตเกียว',`<p>ชีวิตวัยทำงานเริ่มต้นขึ้นแล้ว ค่าเช่าห้อง อาหาร และบิลรายเดือนต้องจ่ายด้วยตัวเอง</p><p>คลิกแท็บ <b>อนาคต</b> เพื่อดูงานที่สมัครได้ตามความรู้ และสามารถเปลี่ยนอาชีพในภายหลัง</p>`,[{title:'ไปเลือกงาน →',act:()=>{closeModal();currentTab='future';render();}}]);}
+function chooseEvent(forceId=null){let choices=[
+  {id:'festival',title:'งานเทศกาลเล็ก ๆ ในย่านที่อยู่',body:'เพื่อนส่งข้อความมาชวนไปเดินงานเทศกาลเย็นวันเสาร์ กลิ่นทาโกะยากิลอยมาจากริมทาง',opts:[
+    {title:'ไปด้วยกัน (−¥1,800)',note:'ความสุข +12 · ความสัมพันธ์ +9',act:()=>{cost(1800,'เดินเที่ยวงานเทศกาล ¥1,800');s.happiness=clamp(s.happiness+12);s.relationships=clamp(s.relationships+9);}},
+    {title:'อยู่บ้านเก็บเงิน',note:'พลังงาน +14 · ความสุข +2',act:()=>{s.energy=clamp(s.energy+14);s.happiness=clamp(s.happiness+2);}}
+  ]},
+  {id:'found',title:'ซองเงินที่ตกอยู่ใกล้สถานี',body:'ระหว่างเดินกลับบ้าน คุณเห็นซองเงินตกอยู่ข้างเครื่องขายน้ำอัตโนมัติ',opts:[
+    {title:'นำส่งป้อมตำรวจ',note:'ความสุข +7 · ความสัมพันธ์ +3',act:()=>{s.happiness=clamp(s.happiness+7);s.relationships=clamp(s.relationships+3);}},
+    {title:'เดินผ่านไป',note:'ไม่เกิดค่าใช้จ่าย',act:()=>{}}
+  ]},
+  {id:'device',title:'โทรศัพท์เริ่มเสีย',body:'หน้าจอโทรศัพท์ดับเป็นพัก ๆ คุณจะทำอย่างไร?',opts:[
+    {title:'ซ่อมทันที (−¥9,000)',note:'จบปัญหาไปหนึ่งอย่าง',act:()=>cost(9000,'ซ่อมโทรศัพท์ ¥9,000')},
+    {title:'ทนใช้ต่อไปก่อน',note:'ความเครียด +9',act:()=>s.stress=clamp(s.stress+9)}
+  ]},
+  {id:'book',title:'พบหนังสือมือสองที่น่าสนใจ',body:'ร้านหนังสือในซอยมีหนังสือสภาพดีที่คุณอยากอ่านมานาน',opts:[
+    {title:'ซื้อหนังสือ (−¥950)',note:'ความรู้ +2.5 · ความสุข +3',act:()=>{cost(950,'ซื้อหนังสือมือสอง ¥950');s.knowledge=clamp(s.knowledge+2.5);s.happiness=clamp(s.happiness+3);}},
+    {title:'เก็บไว้ในรายการที่อยากซื้อ',note:'ไม่มีค่าใช้จ่าย',act:()=>{}}
+  ]},
+  {id:'sick',title:'พักนี้รู้สึกไม่ค่อยสบาย',body:'คุณปวดหัวและอ่อนเพลียเล็กน้อย อาจต้องดูแลตัวเองมากขึ้น',opts:[
+    {title:'พักผ่อนและไปคลินิก (−¥2,200)',note:'สุขภาพ +7 · พลังงาน +12',act:()=>{cost(2200,'ค่าตรวจอาการที่คลินิก ¥2,200');s.health=clamp(s.health+7);s.energy=clamp(s.energy+12);}},
+    {title:'พักที่บ้านก่อน',note:'พลังงาน +8 · ความเครียด +2',act:()=>{s.energy=clamp(s.energy+8);s.stress=clamp(s.stress+2);}}
+  ]},
+  {id:'gift',title:'มีคนในครอบครัวส่งข้อความมา',body:'ข้อความสั้น ๆ ถามว่า “ช่วงนี้สบายดีไหม?” ทำให้คิดถึงบ้าน',opts:[
+    {title:'โทรกลับไปคุยยาว ๆ',note:'ความสุข +10 · ความสัมพันธ์ +8',act:()=>{s.happiness=clamp(s.happiness+10);s.relationships=clamp(s.relationships+8);}},
+    {title:'ตอบข้อความสั้น ๆ',note:'ความสัมพันธ์ +2',act:()=>{s.relationships=clamp(s.relationships+2);}}
+  ]},
+  {id:'bonus',title:'โอกาสหารายได้พิเศษ',body:'ร้านค้าแถวสถานีต้องการคนช่วยจัดของในวันหยุด',opts:[
+    {title:'รับงานช่วยร้าน (ได้ ¥7,200)',note:'พลังงาน −19 · ความเครียด +4',act:()=>{addMoney(7200,'ได้ค่าช่วยงานร้านค้า ¥7,200');s.energy=clamp(s.energy-19);s.stress=clamp(s.stress+4);}},
+    {title:'ปฏิเสธและพักผ่อน',note:'พลังงาน +12',act:()=>{s.energy=clamp(s.energy+12);}}
+  ]},
+  {id:'rain',title:'ฝนตกหนักระหว่างทางกลับบ้าน',body:'สถานีแน่นไปด้วยผู้คน และรถไฟมีความล่าช้า',opts:[
+    {title:'ซื้อร่มที่ร้านใกล้ ๆ (−¥900)',note:'ความเครียด −2',act:()=>{cost(900,'ซื้อร่ม ¥900');s.stress=clamp(s.stress-2);}},
+    {title:'รอฝนหยุด',note:'พลังงาน −5 · ความเครียด +3',act:()=>{s.energy=clamp(s.energy-5);s.stress=clamp(s.stress+3);}}
+  ]}
+ ];
+ let ev=choices.find(x=>x.id===forceId)||pick(choices);s.pending=ev.id;if(!forceId)s.eventsShown++;
+ showModal(ev.title,`<p>${ev.body}</p>`,ev.opts.map(opt=>({title:opt.title,note:opt.note,act:()=>{opt.act();write(`เหตุการณ์: ${ev.title} — ${opt.title}`);s.pending=null;closeModal();render();save();}})));
+}
+function showGuide(){showModal('วิธีใช้ชีวิตในโตเกียว',`<p><b>1.</b> เลือกกิจกรรมทางด้านขวา ทำได้วันละ 2 ครั้ง แล้วกดผ่านไปอีกหนึ่งวัน หรือข้าม 7 / 30 / 365 วัน (อาจหยุดเมื่อมีเหตุการณ์หรือช่วงเปลี่ยนวัย)</p><p><b>2.</b> เมื่ออายุถึงช่วงเปลี่ยนผ่าน จะมีตัวเลือกเส้นทางเรียนและเส้นทางทำงาน เงินที่ใช้และโอกาสอาชีพจะต่างกัน</p><p><b>3.</b> แท็บ <b>การเงิน</b> ใช้ฝากเงิน ถอนเงิน จ่ายหนี้ ดูค่าใช้จ่าย และปรับที่พัก แท็บ <b>อนาคต</b> ใช้เลือกงานเมื่อโตขึ้น</p><p><b>4.</b> เมนู <b>ของใช้</b> ซื้ออุปกรณ์แต่งห้องเพื่อช่วยเพิ่มความสุข พลังงาน และลดค่าใช้จ่ายในระยะยาว</p><p><b>5.</b> คุณสามารถส่งออกเซฟเป็นข้อความแล้วนำกลับมาได้ ผ่านเมนู <b>สำรองเซฟ</b> เหมาะสำหรับการเปลี่ยนเครื่องหรือเบราว์เซอร์ที่ไม่เก็บข้อมูล</p><p><b>6.</b> มีเหตุการณ์สุ่ม ไม่มีภารกิจหรือจุดจบบังคับ และระบบพยายามบันทึกข้อมูลอัตโนมัติในเบราว์เซอร์</p><div class="hint">เพลงประกอบเป็นทำนองบรรเลงต้นฉบับที่สร้างด้วย Web Audio เน้นความละมุนและอบอุ่น ไม่ใช่เพลงจากภาพยนตร์หรือผลงานที่มีลิขสิทธิ์</div>`,[{title:'เข้าใจแล้ว กลับไปเล่น',act:closeModal}]);}
+function newGameModal(){let old=storage?.getItem(SAVE_KEY);let body=`<p>เริ่มต้นชีวิตหนึ่งชีวิตที่โตเกียว ตั้งแต่มัธยมต้นจนถึงวัยทำงาน ครอบครัวและเงินเริ่มต้นจะถูกสุ่ม</p><label for="startName">ชื่อเล่นตัวละคร</label><input type="text" maxlength="24" id="startName" value="ฮารุ" placeholder="ชื่อเล่น" /><label>ตัวละคร</label><div class="gender-pick"><button id="genderFemale" class="chosen" type="button">♀ ผู้หญิง</button><button id="genderMale" type="button">♂ ผู้ชาย</button></div>`;
+ showModal('คุณอยากเริ่มชีวิตแบบไหน?',body,[
+  {title:'เริ่มชีวิตใหม่',note:'สุ่มครอบครัวและเริ่มต้นเมื่ออายุ 14 ปี',act:()=>{let name=$('startName').value;let gender=$('genderMale').classList.contains('chosen')?'male':'female';fresh(name,gender,false);}},
+  ...(old?[{title:'เล่นต่อจากบันทึกเดิม',note:'ใช้ข้อมูลที่บันทึกไว้ในเบราว์เซอร์นี้',act:()=>{try{s=JSON.parse(old);if(!s||![1,2].includes(s.version))throw Error('bad save');migrateSave();closeModal();render();if(s.pendingPhase)showPhase(s.pendingPhase);else if(s.pending)chooseEvent(s.pending);}catch(e){toast('บันทึกเดิมไม่ถูกต้อง กรุณาเริ่มเกมใหม่');}}}]:[])
+ ]);
+ const fm=$('genderFemale'),ma=$('genderMale');fm.addEventListener('click',()=>{fm.classList.add('chosen');ma.classList.remove('chosen');});ma.addEventListener('click',()=>{ma.classList.add('chosen');fm.classList.remove('chosen');});
+}
+function render(){if(!s)return;
+ let d=dateNow(),dayLabel=dateLabel();$('calendar').innerHTML=`<small>${d.getUTCFullYear()} / ${monthsEN[d.getUTCMonth()]}</small><b>${String(d.getUTCDate()).padStart(2,'0')}</b><span>${['SUN','MON','TUE','WED','THU','FRI','SAT'][d.getUTCDay()]} · ${season().toUpperCase()}</span>`;
+ $('turnLabel').textContent=dayLabel;$('actionCounter').textContent=`เหลือ ${Math.max(0,2-s.actions)} กิจกรรม`;
+ const stat=(label,val,under='',color='',width=null)=>`<div class="stat ${color}"><small>${label}</small><strong>${val}</strong>${width===null?`<div class="sublabel">${under}</div>`:`<div class="minibar"><i style="width:${clamp(width)}%"></i></div>`}</div>`;
+ $('statbar').innerHTML=[stat('ช่วงชีวิต',`${ageNow()} ปี · ${labelStage()}`,'東京 / TOKYO'),stat('เงินสด',yen(s.cash),`เงินออม ${yen(s.savings)}`,'money'),stat('หนี้',yen(s.debt),s.debt?'วางแผนคืนหนี้':'ไม่มีหนี้','debt'),stat('ความสุข',`${Math.round(s.happiness)} / 100`,'','',s.happiness),stat('พลังงาน',`${Math.round(s.energy)} / 100`,'','',s.energy)].join('');
+ $('profile').innerHTML=`<div class="avatar-box"><canvas id="avatar" width="32" height="32"></canvas></div><div><div class="person-name">${esc(s.name)} <span style="font-size:11px;color:#ccbdac">${s.gender==='male'?'♂':'♀'}</span></div><div class="person-sub">อายุ ${ageNow()} · ${labelStage()}</div><div class="person-caption">${esc(family().name)}</div></div>`;
+ drawAvatar();
+ [...$('panelTabs').querySelectorAll('button')].forEach(b=>b.classList.toggle('selected',b.dataset.tab===currentTab));
+ if(currentTab==='daily')renderDaily();if(currentTab==='finance')renderFinance();if(currentTab==='future')renderFuture();if(currentTab==='shop')renderShop();
+ $('sceneLabel').textContent=({home:'ห้องพัก · 東京',school:'โรงเรียน · 学校',street:'ย่านที่อยู่ · まち',park:'สวนสาธารณะ · 公園',work:'ที่ทำงาน · 仕事'})[currentLocation];
+ $('sceneSubtitle').textContent=({home:'บางครั้งชีวิตก็เริ่มจากห้องเล็ก ๆ สักห้อง',school:'อีกวันกับบทเรียนและอนาคตที่ยังไม่รู้',street:'เดินผ่านเรื่องราวเล็ก ๆ บนถนนสายเดิม',park:'ช่วงเวลาสั้น ๆ ที่โลกช้าลง',work:'ทุกคนมีจังหวะชีวิตและหน้าที่ของตัวเอง'})[currentLocation];
+ $('sceneWeather').textContent=({winter:'❄ ฤดูหนาว',spring:'✿ ฤดูใบไม้ผลิ',summer:'☀ ฤดูร้อน',autumn:'❧ ฤดูใบไม้ร่วง'})[season()]+(weather()==='rain'?' · ฝนตก':'');
+ [...$('locations').querySelectorAll('button')].forEach(b=>b.classList.toggle('active',b.dataset.location===currentLocation));
+ $('diary').innerHTML=s.log.slice(0,5).map(e=>{let dt=new Date(BEGIN+e.day*DAY);return `<div class="entry"><time>${String(dt.getUTCMonth()+1).padStart(2,'0')}/${String(dt.getUTCDate()).padStart(2,'0')}</time><span>${esc(e.msg)}</span></div>`;}).join('');
+}
+function renderDaily(){const student=s.stage==='junior'||s.stage==='high';let ids=['study',...(student?['parttime']:s.stage==='adult'?['overtime']:['parttime']),'rest','social','explore','hobby','exercise','volunteer',...(independent()?['cook']:[]),...(s.stage==='adult'?['training','freelance']:[])];
+ $('panelContent').innerHTML=`<div class="panel-heading"><h3>วันนี้อยากทำอะไรดี?</h3><small>DAILY CHOICES</small></div><div class="action-grid">${ids.map(id=>{let a=actionData.find(x=>x.id===id),disabled=canAction(id);return `<button class="action" data-act="${id}" ${disabled?'disabled title="'+esc(disabled)+'"':''}><span class="act-top"><span class="em">${a.icon}</span> ${a.label}</span><span class="act-detail">${a.detail}</span><span class="act-cost">${a.cost}</span></button>`;}).join('')}</div><div class="subhead">ชีวิตด้านอื่น ๆ</div><div class="progress-list">${progress('สุขภาพ',s.health)}${progress('ความเครียด',s.stress)}${progress('ความรู้ / ทักษะ',s.knowledge)}${progress('ความสัมพันธ์',s.relationships)}</div><div class="hint"><b>ชีวิตตอนนี้:</b> ${tip()}</div>`;
+}
+function progress(l,v){return `<div class="progress-item"><div class="progress-label"><span>${l}</span><strong>${Math.round(v)} / 100</strong></div><div class="minibar"><i style="width:${clamp(v)}%"></i></div></div>`;}
+function tip(){if(s.stage==='junior')return 'มัธยมต้นยังไม่มีงานพิเศษให้ทำ ลองเพิ่มความรู้และดูแลความสุข เมื่ออายุ 15 ปีจะได้เลือกสายเรียน';if(s.stage==='high')return 'มัธยมปลายทำงานพิเศษได้ ค่าแรงจำลองเริ่มต้น ¥1,230/ชม. คุณจะเลือกเรียนต่อหรือทำงานเมื่ออายุ 18';if(['university','vocational'].includes(s.stage))return 'ทั้งค่าเช่า ค่าอาหาร และค่าเรียนสะสมทุกวัน ทำงานพิเศษและจัดการเงินกู้ให้ดี';if(!s.job)return 'คุณยังไม่มีงานประจำ ไปที่แท็บ “อนาคต” เพื่อสมัครงาน เริ่มมีรายได้ทุกวันที่ 25';return 'เงินเดือนจ่ายวันที่ 25 ของเดือนหลังหักเงินสมทบและภาษีโดยประมาณ ทำงานโอทีเพิ่มรายได้ แต่เสียสุขภาพ';}
+function renderFinance(){let monthlyHousing=independent()?s.rent+9500+4500:0;
+ $('panelContent').innerHTML=`<div class="panel-heading"><h3>สมุดบัญชีเล็ก ๆ</h3><small>YOUR BUDGET</small></div><div class="finance-row"><span>เงินสด</span><span>${yen(s.cash)}</span></div><div class="finance-row"><span>เงินออม</span><span>${yen(s.savings)}</span></div><div class="finance-row"><span>หนี้คงเหลือ</span><span class="${s.debt?'locked':''}">${yen(s.debt)}</span></div><div class="finance-row finance-total"><span>ทรัพย์สินสุทธิ (เงินสด + ออม − หนี้)</span><span>${yen(s.cash+s.savings-s.debt)}</span></div><div class="subhead">กระแสเงินสดของเดือนนี้</div><div class="finance-row"><span>รายรับแล้ว</span><span style="color:var(--mint)">+ ${yen(s.monthIncome)}</span></div><div class="finance-row"><span>รายจ่ายแล้ว</span><span style="color:var(--red)">− ${yen(s.monthExpense)}</span></div><div class="finance-row"><span>ค่าที่พักและบิลประจำเดือน</span><span>${yen(monthlyHousing)}</span></div>${s.stage==='adult'&&s.job?`<div class="hint">รายได้ประจำก่อนหัก ${yen(jobData.find(j=>j.id===s.job).gross+s.salaryBonus)}/เดือน · เข้าวันที่ 25 · ประมาณการรายรับสุทธิ ${yen(Math.round((jobData.find(j=>j.id===s.job).gross+s.salaryBonus)*(1-((jobData.find(j=>j.id===s.job).gross+s.salaryBonus)>355000?.245:(jobData.find(j=>j.id===s.job).gross+s.salaryBonus)>285000?.225:.195))))}</div>`:''}
+ <div class="subhead">จัดการเงิน</div><div class="bank-box"><input type="number" min="1" id="bankAmount" placeholder="จำนวนเงิน (เยน)" aria-label="จำนวนเงิน (เยน)"></div><div class="bank-box"><button data-transfer="deposit">ฝากเงิน</button><button data-transfer="withdraw">ถอนเงิน</button><button data-transfer="repay" ${s.debt<=0?'disabled':''}>คืนหนี้</button></div>
+ ${['university','vocational'].includes(s.stage)?`<div class="subhead">กู้เพื่อการศึกษา</div><div class="hint">${s.studentLoan?'เปิดอยู่':'ปิดอยู่'} · รับ ¥60,000/เดือน และยอดหนี้เพิ่มเท่ากัน เงินกู้จำลองนี้คิดดอกเบี้ยเล็กน้อย</div><button class="quiet" data-loan="toggle">${s.studentLoan?'หยุดกู้เดือนถัดไป':'เริ่มรับเงินกู้การศึกษา'}</button>`:''}
+ ${independent()?`<div class="subhead">เลือกที่พัก · จ่ายค่าเช่าวันที่ 1</div>${[{id:'share',name:'แชร์ห้อง',rent:59000},{id:'small',name:'สตูดิโอขนาดเล็ก',rent:78000},{id:'cozy',name:'ห้องใหญ่ใกล้สถานี',rent:114000}].map(h=>`<div class="finance-row"><span>${h.name} ${s.home===h.id?'✓':''}</span><span>${yen(h.rent)} <button class="quiet" data-home="${h.id}" ${s.home===h.id?'disabled':''}>เลือก</button></span></div>`).join('')}`:''}
+ <div class="subhead">รูปแบบการใช้ชีวิต</div><div class="hint">${s.lifestyle==='frugal'?'ประหยัด: ค่าอาหารประมาณ ¥930 ต่อวัน แต่ความสุขลดเล็กน้อย':s.lifestyle==='comfortable'?'ใช้ชีวิตสบาย: ค่าอาหารประมาณ ¥2,350 ต่อวัน และความสุขเพิ่มเล็กน้อย':'สมดุล: ค่าอาหารประมาณ ¥1,450 ต่อวัน'}</div><div class="bank-box"><button data-life="frugal" ${s.lifestyle==='frugal'?'disabled':''}>ประหยัด</button><button data-life="normal" ${s.lifestyle==='normal'?'disabled':''}>สมดุล</button><button data-life="comfortable" ${s.lifestyle==='comfortable'?'disabled':''}>สบาย</button></div>
+ <div class="hint">เงินเดือน ค่าแรง ค่าที่พัก อาหาร ภาษี และเงินสมทบในเกมเป็นค่าประมาณที่ปรับให้ง่ายต่อการเล่น ไม่ใช่คำแนะนำการเงินหรือค่าจ้างจริงของทุกพื้นที่ในญี่ปุ่น</div>`;
+}
+function renderFuture(){if(s.stage!=='adult'){
+ let notes=s.stage==='junior'?`มัธยมต้น → อายุ 15 เลือกสายมัธยมปลาย → อายุ 18 เลือกเรียนต่อหรือทำงาน`:s.stage==='high'?`ตอนอายุ 18 จะเลือก มหาวิทยาลัย 4 ปี / วิทยาลัยอาชีพ 2 ปี / ทำงานทันที`:`หลักสูตรของคุณจะจบตอนอายุ ${s.stage==='university'?22:20} ปี และเลือกอาชีพได้`;
+ $('panelContent').innerHTML=`<div class="panel-heading"><h3>ทางเดินที่ยังเปิดกว้าง</h3><small>YOUR FUTURE</small></div><div class="hint">${notes}</div><div class="subhead">โปรไฟล์การเติบโต</div>${progress('ความรู้ / ทักษะ',s.knowledge)}${progress('ประสบการณ์',s.experience)}${progress('ความสัมพันธ์',s.relationships)}<div class="hint">คุณไม่จำเป็นต้องเก่งทุกอย่าง ลองเลือกสิ่งที่สนใจ และใช้ชีวิตตามจังหวะของตัวเอง</div>`;
+ return;}
+ $('panelContent').innerHTML=`<div class="panel-heading"><h3>งานและเส้นทางอาชีพ</h3><small>CAREER BOARD</small></div><div class="hint">ความรู้ ${Math.round(s.knowledge)}/100 · ประสบการณ์ ${Math.round(s.experience)}/100 · ${s.degree==='completed'?'มีวุฒิหลังมัธยม':'วุฒิมัธยมปลาย'}<br>เงินเดือนด้านล่างเป็น <b>ก่อนหักภาษีและเงินสมทบ</b> ภายในแบบจำลอง</div>${jobData.map(j=>{let locked=s.knowledge<j.req||(j.degree&&s.degree!=='completed');let inJob=s.job===j.id;return `<div class="job"><div class="job-name"><span>${j.name}</span><span class="job-pay">${yen(j.gross)}/เดือน</span></div><small>${j.jp} · ${j.description}<br>ต้องการความรู้ ${j.req}/100${j.degree?' · วุฒิหลังมัธยม':''}</small><button data-job="${j.id}" ${locked||inJob?'disabled':''}>${inJob?'✓ งานปัจจุบัน':locked?'ยังไม่ผ่านคุณสมบัติ':'สมัคร / เปลี่ยนงาน'}</button></div>`;}).join('')}<div class="hint">เมื่อทำงานครบ 12 เดือน จะมีโอกาสได้เงินเดือนเพิ่มอัตโนมัติ ยิ่งความรู้สูงก็มีตัวเลือกงานมากขึ้น</div>`;
+}
+function renderShop(){
+ $('panelContent').innerHTML=`<div class="panel-heading"><h3>ของใช้สำหรับห้องเล็ก ๆ</h3><small>HOME & EVERYDAY</small></div><div class="hint">ของแต่ละชิ้นมีผลต่อชีวิตในระยะยาว ซื้อครั้งเดียวเป็นเจ้าของตลอดการเล่น · เงินสดตอนนี้ <b>${yen(s.cash)}</b></div>${shopItems.map(i=>`<div class="job"><div class="job-name"><span>${i.emoji} ${i.label}</span><span class="job-pay">${yen(i.cost)}</span></div><small>${i.detail}</small><button data-item="${i.id}" ${hasItem(i.id)||s.cash<i.cost?'disabled':''}>${hasItem(i.id)?'✓ มีแล้ว':s.cash<i.cost?'เงินสดไม่พอ':'ซื้อของชิ้นนี้'}</button></div>`).join('')}<div class="hint">เลือกซื้อเฉพาะสิ่งที่อยากได้ ไม่ต้องซื้อทุกอย่าง เกมไม่มีภารกิจบังคับ</div>`;
+}
+function buyItem(id){const item=shopItems.find(i=>i.id===id);if(!item||hasItem(id))return;if(s.cash<item.cost){toast('เงินสดไม่พอสำหรับซื้อของชิ้นนี้');return;}s.cash-=item.cost;s.monthExpense+=item.cost;s.inventory.push(item.id);s.happiness=clamp(s.happiness+3);write(`ซื้อ${item.label} ราคา ${yen(item.cost)}`);render();save();toast(`ซื้อ${item.label}สำเร็จ`);}
+function setLifestyle(v){if(!['frugal','normal','comfortable'].includes(v))return;s.lifestyle=v;write(`ปรับรูปแบบการใช้ชีวิตเป็น ${v==='frugal'?'ประหยัด':v==='normal'?'สมดุล':'สบาย'}`);render();save();}
+function migrateSave(){if(!s||![1,2].includes(s.version)||!Number.isFinite(s.day)||s.day<0)throw Error('invalid saved game');if(!Array.isArray(s.inventory))s.inventory=[];if(!['frugal','normal','comfortable'].includes(s.lifestyle))s.lifestyle='normal';if(!Array.isArray(s.log))s.log=[];s.version=2;}
+function exportSave(){if(!s)return;showModal('สำรองข้อมูลเกม',`<p>คัดลอกข้อความทั้งหมดเก็บไว้ แล้วนำกลับมาวางในเมนูนำเข้าเซฟเพื่อเล่นต่อในเครื่องอื่น</p><textarea id="saveText" class="save-text" readonly spellcheck="false">${esc(JSON.stringify(s))}</textarea><div class="hint">หากคุณเปิดจากแอป ChatGPT หรือโหมดส่วนตัว ระบบบันทึกอัตโนมัติอาจไม่อยู่ถาวร การสำรองแบบข้อความจึงปลอดภัยกว่า</div>`,[{title:'คัดลอกข้อความเซฟ',act:()=>{let el=$('saveText');el.focus();el.select();try{if(navigator.clipboard?.writeText){navigator.clipboard.writeText(el.value).then(()=>toast('คัดลอกเซฟแล้ว')).catch(()=>toast('เลือกข้อความไว้แล้ว กรุณากดคัดลอก'));}else toast('เลือกข้อความไว้แล้ว กรุณากดคัดลอก');}catch(e){toast('เลือกข้อความไว้แล้ว กรุณากดคัดลอก');}}},{title:'ปิด',act:closeModal}]);}
+function importSave(){showModal('นำข้อมูลเกมกลับมา',`<p>วางข้อความเซฟ JSON ที่เคยสำรองไว้ด้านล่าง</p><textarea id="importText" class="save-text" spellcheck="false" placeholder="วางข้อความเซฟที่นี่"></textarea>`,[{title:'โหลดข้อมูลที่วาง',act:()=>{try{const raw=$('importText').value;if(raw.length>250000)throw Error('ใหญ่เกินไป');let data=JSON.parse(raw);if(!data||typeof data!=='object'||!Array.isArray(data.log)||!Number.isFinite(data.cash)||!['junior','high','university','vocational','adult'].includes(data.stage))throw Error('ไม่ใช่เซฟเกม');s=data;migrateSave();closeModal();render();save();toast('โหลดเซฟสำเร็จ');if(s.pendingPhase)showPhase(s.pendingPhase);else if(s.pending)chooseEvent(s.pending);}catch(e){toast('โหลดไม่สำเร็จ: ตรวจข้อความเซฟอีกครั้ง');}}},{title:'ยกเลิก',act:closeModal}]);}
+$('panelTabs').addEventListener('click',e=>{let b=e.target.closest('button[data-tab]');if(!b||!s||modalOpen)return;currentTab=b.dataset.tab;render();});
+$('locations').addEventListener('click',e=>{let b=e.target.closest('button[data-location]');if(!b||!s||modalOpen)return;currentLocation=b.dataset.location;render();});
+$('panelContent').addEventListener('click',e=>{let b=e.target.closest('button');if(!b||!s||modalOpen)return;if(b.dataset.act)doAction(b.dataset.act);else if(b.dataset.transfer)savingsTransfer(b.dataset.transfer);else if(b.dataset.home)setHome(b.dataset.home);else if(b.dataset.job)startJob(b.dataset.job);else if(b.dataset.loan)setLoan();else if(b.dataset.item)buyItem(b.dataset.item);else if(b.dataset.life)setLifestyle(b.dataset.life);});
+$('nextDay').addEventListener('click',()=>advance(1));$('nextWeek').addEventListener('click',()=>advance(7));$('nextMonth').addEventListener('click',()=>advance(30));$('nextYear').addEventListener('click',()=>advance(365));
+$('saveBtn').addEventListener('click',()=>save(false));$('guideBtn').addEventListener('click',()=>showGuide());$('exportBtn').addEventListener('click',exportSave);$('importBtn').addEventListener('click',importSave);
+$('newBtn').addEventListener('click',()=>{if(modalOpen)return;showModal('เริ่มชีวิตใหม่จริงไหม?',`<p>ข้อมูลการเล่นเดิมจะถูกแทนที่เมื่อคุณเริ่มเกมใหม่</p>`,[{title:'ยกเลิก กลับไปเล่น',act:closeModal},{title:'เริ่มชีวิตใหม่ (ลบความคืบหน้าเดิม)',warn:true,act:()=>{closeModal();newGameModal();}}]);});
+
+// ------------ Hand-drawn, procedural pixel-art world ------------
+function rect(x,y,w,h,color){ctx.fillStyle=color;ctx.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h));}
+function line(x1,y1,x2,y2,color,width=1){ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(Math.round(x1)+.5,Math.round(y1)+.5);ctx.lineTo(Math.round(x2)+.5,Math.round(y2)+.5);ctx.stroke();}
+function txt(t,x,y,c='#fff',size=9){ctx.fillStyle=c;ctx.font=`bold ${size}px ui-monospace,monospace`;ctx.fillText(t,x,y);}
+function sky(){let t=season();let rainy=weather()==='rain';let pal=t==='winter'?['#8e9cb1','#cad0d8','#eff0e9']:t==='autumn'?['#d38e93','#e9bbab','#f2cfb6']:t==='summer'?['#7cadd0','#b0cfdd','#d7e1d8']:['#91a6cb','#b7c4d2','#e1d5c8'];
+  for(let y=0;y<178;y+=4){let k=y<56?0:y<116?1:2;rect(0,y,480,4,pal[k]);}
+  rect(370,34,25,25,t==='winter'?'#f7f2da':'#ffedd2');rect(375,30,15,32,pal[0]);rect(366,39,33,15,pal[0]);
+  [[15,36],[128,22],[227,47],[335,10]].forEach(([x,y],i)=>{let off=Math.floor(Math.sin(frame/85+i)*4);rect(x+off,y,34,5,'#e7e2e0');rect(x+off+7,y-4,20,4,'#e7e2e0');rect(x+off+4,y+5,26,3,'#e7e2e0');});
+  for(let i=0;i<13;i++){let x=i*43-14;let h=31+((i*53)%78);rect(x,176-h,39,h,i%2?'#7287a1':'#7c8aa1');rect(x+2,176-h-5,25,5,i%2?'#7287a1':'#7c8aa1');for(let yy=176-h+9;yy<174;yy+=12)for(let xx=x+5;xx<x+36;xx+=9){let glow=((i*13+xx*3+yy)%5)<2;rect(xx,yy,3,5,glow?'#ffe2ab':'#a3afbf');}}
+  if(rainy){rect(0,0,480,176,'#77839822');}
+}
+function pixelWindow(x,y,w,h,frameColor='#706e87'){
+  rect(x-6,y-6,w+12,h+13,'#546078');rect(x-3,y-3,w+6,h+6,frameColor);ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();sky();ctx.restore();rect(x+w/2-2,y,4,h,frameColor);rect(x,y+h*.63,w,3,frameColor);rect(x-9,y+h+6,w+18,5,'#92919b');
+}
+function roomScene(){
+  rect(0,0,480,194,'#b7a8a9');rect(0,0,480,15,'#d4c3b6');for(let i=0;i<8;i++)rect(i*66+9,19,1,167,'#b1a0a4');
+  rect(0,188,480,82,'#b68f86');for(let y=192;y<270;y+=22)rect(0,y,480,2,'#987b7e');for(let x=0;x<480;x+=61)rect(x,190,2,80,'#b18e83');
+  pixelWindow(242,31,183,112,'#d0bac0');
+  rect(14,35,106,134,'#8b7d86');rect(22,45,91,114,'#bdaca9');rect(25,42,85,7,'#dcc3b7');
+  for(let i=0;i<4;i++){rect(24,68+i*22,83,3,'#806c71');rect(31+i%2*4,49+i*22,9,18,'#e8cfbc');rect(44,53+i*22,14,14,'#9aa6a3');rect(65,54+i*22,7,13,'#bd8598');rect(77,50+i*22,5,18,'#e2b8a8');}
+  rect(35,172,183,12,'#6c616b');rect(35,160,184,12,'#827881');rect(42,156,174,17,'#e1c3ba');rect(57,151,60,9,'#f0e0ce');rect(46,149,8,10,'#b2a2a5');rect(59,139,59,17,'#ebe1d9');rect(67,142,40,7,'#d8c7d0');
+  rect(225,173,214,11,'#6d5f67');rect(231,159,202,15,'#d4bcb2');rect(237,163,30,4,'#a9aabc');rect(389,162,24,9,'#eee0c2');rect(403,145,4,18,'#9e847d');rect(399,140,12,7,'#e8cfab');
+  rect(282,179,13,57,'#6a606a');rect(393,179,13,59,'#6a606a');rect(313,205,43,15,'#957b7c');rect(316,219,4,18,'#765e68');rect(352,219,4,18,'#765e68');
+  rect(453,70,4,124,'#8c797d');rect(440,70,24,6,'#e2bba6');rect(444,75,2,9,'#e3d2b1');rect(446,88,2,3,'#e3d2b1');
+  rect(16,215,96,38,'#b9978d');rect(20,219,88,30,'#d0aaa0');rect(40,225,51,12,'#b68e85');
+  rect(167,18,3,18,'#8e7b8a');rect(156,33,27,10,'#e5bd9b');rect(161,41,17,6,'#f4d7aa');
+  const px=284+Math.sin(frame/35)*2;drawPerson(px,200,2.05);
+  rect(237,228,41,8,'#877b81');rect(240,236,36,6,'#b7a7a0');
+  rect(114,69,62,42,'#8d7d8d');rect(119,74,52,32,'#e7d2be');rect(124,95,20,8,'#91a6a4');rect(140,85,24,15,'#cf9b9d');
+  for(let i=0;i<8;i++){let x=191+i*6,y=245+Math.sin(i*3)*4;rect(x,y,3,3,'#d5bab1');}
+}
+function schoolScene(){
+ sky();rect(0,0,480,179,'#c1b9aa');rect(0,178,480,92,'#b28c77');
+ for(let i=0;i<3;i++){rect(i*151+15,21,138,124,'#8e948f');ctx.save();ctx.beginPath();ctx.rect(i*151+20,26,128,112);ctx.clip();sky();ctx.restore();rect(i*151+80,25,5,113,'#c0b5a6');rect(i*151+20,84,129,5,'#c0b5a6');}
+ rect(0,146,480,30,'#b9aaa1');rect(20,165,209,70,'#88756f');rect(27,175,195,52,'#b2a79a');
+ rect(26,150,202,11,'#e2c4ad');rect(39,130,34,16,'#caa4a4');rect(45,124,10,9,'#e5d5ba');rect(57,124,13,7,'#e4d1af');rect(65,114,8,12,'#a7b99c');rect(168,126,29,19,'#9fa6ad');rect(174,122,12,5,'#ccc8b9');
+ for(let i=0;i<3;i++){let x=259+(i%2)*90,y=171+Math.floor(i/2)*41;rect(x,y,82,11,'#776968');rect(x-5,y-6,92,9,'#b3a098');rect(x+4,y+11,5,39,'#756e72');rect(x+72,y+11,5,39,'#756e72');rect(x+28,y-11,23,4,'#c9c0af');}
+ rect(0,239,480,31,'#987d78');for(let i=0;i<480;i+=74)rect(i,240,2,29,'#7a6f70');drawPerson(173,194,2.05);
+ rect(411,133,46,66,'#948b8d');rect(414,138,40,56,'#d8c2ba');txt('SCHOOL',360,16,'#51596c',9);
+}
+function drawHouse(x,y,w,h,c,roof=false){rect(x,y,w,h,c);if(roof){rect(x-7,y-6,w+14,8,'#6c6877');rect(x+7,y-11,w-14,5,'#625f70');}rect(x+w-13,y,4,h,'#00000018');for(let yy=y+18;yy<y+h-8;yy+=20)for(let xx=x+10;xx<x+w-8;xx+=21){rect(xx,yy,11,11,'#596779');rect(xx+1,yy+1,8,8,((xx*3+yy)%4===0?'#f3d3a6':'#a5b5b4'));}}
+function sakura(x,y,scale=1){rect(x-4*scale,y+20*scale,8*scale,55*scale,'#7d666e');let pet=season()==='spring'?'#e8b8bd':season()==='autumn'?'#dc9778':season()==='winter'?'#aeb3b5':'#7faca0';for(let i=0;i<16;i++){let a=i*2.4;let xx=x+Math.cos(a)*((i%3+1)*11),yy=y+Math.sin(a)*((i%4+1)*7);rect(xx*1,yy*1,15*scale,11*scale,pet);}rect(x-10*scale,y+4*scale,25*scale,22*scale,pet);}
+function streetScene(){sky();drawHouse(0,74,83,112,'#b2a6a5',true);drawHouse(80,29,119,159,'#9c97a5',true);drawHouse(200,62,88,127,'#918ca5');drawHouse(305,34,108,155,'#aa9aa3');drawHouse(415,62,79,128,'#a08b93');
+ rect(0,186,480,29,'#ac9e96');rect(0,209,480,61,'#647380');rect(0,207,480,3,'#e2c8a1');rect(0,252,480,4,'#d4c2a9');for(let i=0;i<10;i++)rect(i*60+4,243,34,3,'#d0bbb1');
+ rect(20,135,62,56,'#c4aba0');rect(23,145,56,38,'#73586d');rect(28,147,45,22,'#edc7a5');txt('CAFE',29,162,'#704f5c',13);rect(30,173,41,12,'#a8877b');
+ rect(322,140,92,51,'#a88a92');rect(327,145,82,26,'#e2d2bb');txt('24H MART',334,160,'#6b6d7a',9);rect(331,171,27,19,'#526377');rect(365,174,40,12,'#7f9294');
+ rect(226,155,3,63,'#666a73');rect(222,158,22,24,'#444d5d');rect(225,160,17,15,'#4f585e');rect(229,164,6,5,'#f0b4a3');
+ rect(102,204,3,44,'#5e6672');rect(98,199,15,7,'#f5dabb');txt('TOKYO',253,101,'#e7d3c7',11);
+ sakura(150,137,.7);drawPerson(276+Math.sin(frame/27)*3,201,2.15);
+ for(let i=0;i<4;i++){let x=i*30+315;rect(x,221,11,2,'#d0d2ca');}
+}
+function parkScene(){sky();rect(0,154,480,115,'#8daba2');rect(0,210,480,60,'#b4ae9b');rect(0,220,480,34,'#d2baa3');rect(0,253,480,17,'#b3c2a1');
+ rect(47,120,14,110,'#947e75');rect(417,99,15,135,'#866d76');
+ for(let q=0;q<18;q++){let x=20+((q*43)%103)-27,y=90+((q*31)%68)-38;rect(x,y,41,29,season()==='autumn'?'#be8f79':season()==='winter'?'#bdc3bf':season()==='spring'?'#e0b0b3':'#7ea999');}
+ for(let q=0;q<18;q++){let x=395+((q*43)%103)-27,y=70+((q*37)%82)-35;rect(x,y,35,32,season()==='autumn'?'#cc997e':season()==='winter'?'#c6cdca':season()==='spring'?'#e9bfc5':'#79a398');}
+ rect(193,187,155,31,'#90aeb3');rect(204,190,120,5,'#b6d3ce');for(let i=0;i<5;i++)rect(212+i*26,204,12,2,'#c2d8d4');
+ rect(115,168,76,8,'#897b70');rect(111,176,84,8,'#8f6e6c');rect(123,185,5,31,'#70606c');rect(178,185,5,31,'#70606c');
+ rect(7,247,54,20,'#8e9b85');rect(25,230,3,19,'#6f847c');rect(20,224,14,8,'#e7c5bb');drawPerson(264,206,2.15);
+ for(let i=0;i<9;i++){rect(344+i*13,239+(i%3)*8,3,2,'#e7c7b5');}
+}
+function workScene(){sky();rect(0,0,480,180,'#9da6ac');rect(0,181,480,89,'#bdb3a8');rect(0,237,480,33,'#a49b98');
+ if(s.stage==='adult'&&['office','developer','research','art'].includes(s.job)){
+   rect(20,16,204,119,'#778498');rect(24,20,196,111,'#b5c5ce');for(let i=0;i<5;i++)rect(25+i*40,20,3,111,'#9ba6ad');rect(24,80,196,4,'#9ba6ad');
+   rect(228,29,212,109,'#c3b6b5');rect(244,42,158,83,'#ebe0cf');rect(252,52,142,4,'#a8b2b2');rect(252,63,100,6,'#d3bbb2');rect(252,75,118,5,'#d3bbb2');
+   for(let i=0;i<2;i++){let x=i*206+55;rect(x,186,175,10,'#726d76');rect(x+10,196,9,55,'#6c676c');rect(x+145,196,9,55,'#6c676c');rect(x+38,159,76,29,'#64758b');rect(x+43,164,66,20,'#a9bcbd');rect(x+70,188,10,4,'#626675');rect(x+116,185,40,4,'#b5ada4');}
+   txt('OFFICE',318,148,'#ece9db',11);
+ }else{
+   rect(14,20,150,146,'#778691');rect(18,24,142,138,'#d0d4c8');rect(23,29,64,128,'#9cadaa');rect(92,29,64,128,'#adb6b6');
+   rect(176,43,288,144,'#d6c4b2');for(let i=0;i<4;i++){let x=191+i*65;rect(x,51,55,8,'#846f72');for(let k=0;k<4;k++){rect(x+7+k*11,65,9,18,k%2?'#dfad8e':'#9cb2b0');rect(x+6+k*11,93,12,21,k%2?'#ead4ad':'#cd94a1');rect(x+7+k*11,123,9,20,k%2?'#a1bec5':'#d7b594');}}
+   rect(0,181,480,13,'#775e68');rect(0,195,480,40,'#bba69d');rect(20,202,96,9,'#8a8e8d');rect(36,211,64,10,'#eee4d3');rect(408,201,36,14,'#b996a3');txt('WORK',350,23,'#eeece8',13);
+ }
+ drawPerson(259,201,2.1);
+}
+function drawPerson(x,y,scale=2){if(!s)return;ctx.save();ctx.translate(Math.round(x),Math.round(y));ctx.scale(scale,scale);let bob=Math.sin(frame/12)*.5;
+ const shirt=s.stage==='adult'?'#819ea8':'#a8849e';const hair=s.gender==='male'?'#47485b':'#514353';
+ rect(-5,0,4,11,'#3d465d');rect(1,0,4,11,'#465168');rect(-6,9,5,3,'#393f53');rect(1,9,5,3,'#393f53');
+ rect(-8,-14+bob,16,16,shirt);rect(-7,-14+bob,14,2,'#c6b9b9');rect(-10,-11+bob,3,11,shirt);rect(7,-11+bob,3,11,shirt);
+ rect(-9,-1+bob,2,4,'#dab4a7');rect(8,-1+bob,2,4,'#dab4a7');
+ if(s.gender==='female'){rect(-9,-32+bob,18,19,hair);rect(-11,-26+bob,4,17,hair);rect(7,-26+bob,4,17,hair);}else{rect(-9,-31+bob,18,10,hair);rect(-7,-34+bob,12,4,hair);}
+ rect(-7,-28+bob,14,14,'#edc6ad');rect(-7,-29+bob,14,4,hair);rect(-6,-30+bob,5,5,hair);rect(4,-30+bob,3,5,hair);
+ rect(-4,-21+bob,2,2,'#51444a');rect(3,-21+bob,2,2,'#51444a');rect(-1,-17+bob,3,1,'#bd8d89');ctx.restore();}
+function drawAvatar(){let c=$('avatar');if(!c)return;let g=c.getContext('2d');g.imageSmoothingEnabled=false;g.clearRect(0,0,32,32);let bg=s.gender==='female'?'#9f889e':'#829fae';g.fillStyle=bg;g.fillRect(0,0,32,32);let old=ctx;
+ // Avatar uses its own small pixel grid; independent of world context.
+ const rr=(x,y,w,h,col)=>{g.fillStyle=col;g.fillRect(x,y,w,h);};
+ rr(7,24,18,8,'#bea4bb');rr(4,28,24,5,'#a5a5bb');rr(7,5,18,19,'#4f4153');rr(9,11,14,13,'#edc8ae');rr(8,4,16,10,'#504456');rr(12,17,2,2,'#4d4251');rr(19,17,2,2,'#4d4251');rr(16,21,3,1,'#b38b8c');if(s.gender==='male'){rr(5,13,3,5,bg);rr(24,13,3,5,bg);}else{rr(5,13,3,14,'#4f4153');rr(24,13,3,14,'#4f4153');}
+}
+function atmosphere(){let t=season(),rain=weather()==='rain';for(let i=0;i<21;i++){let x=((i*127+Math.floor(frame*(rain?2:.32)))%510)-15;let y=((i*53+Math.floor(frame*(rain?3:.48)))%235)+12;
+   if(rain){line(x,y,x-5,y+10,'#d3d8e6',1);}else if(t==='winter'){rect(x,y,2,2,'#fff3eb');}else if(t==='spring'){rect(x,y,3,3,i%2?'#e8bfcc':'#f2dfcd');}else if(t==='autumn'){rect(x,y,3,2,'#d9a090');}
+ }
+}
+function draw(){if(!s){rect(0,0,480,270,'#aaa3aa');return;}ctx.clearRect(0,0,480,270);if(currentLocation==='home')roomScene();else if(currentLocation==='school')schoolScene();else if(currentLocation==='street')streetScene();else if(currentLocation==='park')parkScene();else workScene();atmosphere();frame++;}
+function animate(){draw();requestAnimationFrame(animate);}
+
+// ------------ Original cozy generative instrumental soundtrack ------------
+const song = {
+ // Original melodic material. All pitches generated from these short phrases.
+ notes:[64,null,67,69,72,69,67,null,62,64,67,64,62,null,60,null, 64,67,69,null,72,74,72,69,67,null,64,62,60,null,62,null],
+ chords:[[53,57,60,64],[48,52,55,59],[50,53,57,60],[55,59,62,64]]
+};
+function pluck(midi,at,dur=.8,volume=.09,tone='sine'){
+ if(!audio)return;let frequency=440*Math.pow(2,(midi-69)/12),o=audio.createOscillator(),v=audio.createGain(),filter=audio.createBiquadFilter();
+ o.type=tone;o.frequency.setValueAtTime(frequency,at);filter.type='lowpass';filter.frequency.value=tone==='triangle'?1200:1900;
+ v.gain.setValueAtTime(.0001,at);v.gain.exponentialRampToValueAtTime(volume,at+.018);v.gain.exponentialRampToValueAtTime(.0001,at+dur);
+ o.connect(filter);filter.connect(v);v.connect(audio.destination);o.start(at);o.stop(at+dur+.04);
+}
+function playStep(index,time){let step=index%32,change=Math.floor(step/8);
+ if(step%8===0){for(let n of song.chords[change])pluck(n-12,time,2.3,.011,'sine');pluck(song.chords[change][0]-24,time,1.8,.036,'triangle');}
+ if(step%4===2)pluck(song.chords[change][2]-12,time,1.15,.025,'sine');
+ const note=song.notes[step];if(note!==null)pluck(note,time,.78,.049,'sine');
+}
+function scheduleMusic(){if(!audio||!musicOn)return;while(nextMusicTime<audio.currentTime+.28){playStep(musicStep++,nextMusicTime);nextMusicTime+=60/78/2;}}
+let nextMusicTime=0;
+function toggleMusic(){if(musicOn){musicOn=false;clearInterval(musicInterval);musicInterval=null;$('musicBtn').textContent='♫ เปิดเพลง';toast('ปิดเพลงบรรเลงแล้ว');return;}
+ try{audio=audio||new (window.AudioContext||window.webkitAudioContext)();audio.resume();musicOn=true;musicStep=0;nextMusicTime=audio.currentTime+.07;musicInterval=setInterval(scheduleMusic,95);scheduleMusic();$('musicBtn').textContent='♫ ปิดเพลง';toast('เปิดเพลงเปียโนบรรเลงต้นฉบับแล้ว');}catch(e){toast('เบราว์เซอร์นี้ไม่รองรับเสียงเพลง');}
+}
+$('musicBtn').addEventListener('click',toggleMusic);
+
+// ------------ Start / Restore: auto-play, even when localStorage is restricted ------------
+(function boot(){
+ try{
+  const raw=storage?.getItem(SAVE_KEY)||storage?.getItem(OLD_SAVE_KEY);
+  const saved=raw?JSON.parse(raw):null;
+  if(saved && [1,2].includes(saved.version)){
+   s=saved;migrateSave();render();save();
+   if(s.pendingPhase)showPhase(s.pendingPhase);
+   else if(s.pending)chooseEvent(s.pending);
+  }else{fresh('ฮารุ','female',true);}
+ }catch(e){fresh('ฮารุ','female',true);}
+ requestAnimationFrame(animate);
+})();
+
+</script>
+</body>
+</html>
