@@ -1,0 +1,12 @@
+{
+  "loader": "Build/Sparta-WebGL.loader.js",
+  "config": {
+    "dataUrl": "Build/Sparta-WebGL.data.unityweb",
+    "frameworkUrl": "Build/Sparta-WebGL.framework.js.unityweb",
+    "codeUrl": "Build/Sparta-WebGL.wasm.unityweb",
+    "companyName": "PHUWADAT",
+    "productName": "SPARTA LAST STAND",
+    "productVersion": "0.1.0",
+    "streamingAssetsUrl": "StreamingAssets"
+  }
+}

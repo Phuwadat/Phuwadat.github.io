@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100d0a">
+  <meta name="description" content="Play SPARTA: LAST STAND, a Unity tactical action game by PHUWADAT.">
+  <title>Play SPARTA: LAST STAND · PHUWADAT</title>
+  <link rel="icon" href="../../assets/favicon.svg">
+  <link rel="stylesheet" href="sparta.css">
+  <script src="launch.js" defer></script>
+</head>
+<body>
+  <header class="shell">
+    <a href="../../#sparta">Back to PHUWADAT</a>
+    <span>Desktop · Mouse and keyboard</span>
+  </header>
+  <main class="shell">
+    <section id="stage" aria-label="SPARTA game">
+      <canvas id="game" width="1280" height="720" tabindex="-1" aria-label="SPARTA: LAST STAND"></canvas>
+      <div id="launcher">
+        <h1>SPARTA<span>LAST STAND</span></h1>
+        <button type="button" id="start">Start game</button>
+        <p id="status" role="status">Requires a desktop browser with WebGL.</p>
+        <progress id="loading" aria-label="Game loading progress" max="1" value="0" hidden></progress>
+      </div>
+    </section>
+    <div class="controls">
+      <p><b>Left click</b> move or attack <b>Right hold + click</b> spear volley <b>Space</b> recruit <b>F / G / H / J</b> formations</p>
+      <button type="button" id="fullscreen" disabled>Fullscreen</button>
+    </div>
+  </main>
+</body>
+</html>

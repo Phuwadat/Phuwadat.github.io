@@ -1,0 +1,27 @@
+:root {color-scheme:dark; --ink:#110e0c; --pale:#f9ead0; --gold:#e0ad68}
+* {box-sizing:border-box}
+body {background:var(--ink); color:var(--pale); margin:0; font:1rem/1.5 system-ui,sans-serif}
+.shell {width:min(94vw,1300px); margin-inline:auto}
+header {min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:1rem}
+header a {color:var(--gold); text-underline-offset:.28em}
+header span {color:#bdad98; font-size:.875rem}
+#stage {position:relative; isolation:isolate; aspect-ratio:16/9; overflow:hidden; border:1px solid #987244; background:#1a130e}
+#stage::before {content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(92deg,#140d08ee,#140d0899 40%,#140d0812),url("../../assets/sparta-cover.jpg") center/cover}
+canvas {display:block; width:100%; height:100%; background:#17120f; opacity:0; position:absolute; inset:0}
+canvas.ready {opacity:1}
+#launcher {position:absolute; inset:0; display:grid; align-content:center; justify-items:start; padding:clamp(18px,6vw,85px)}
+#launcher[hidden],progress[hidden] {display:none}
+h1 {font:700 clamp(2rem,8vw,7.25rem)/.82 Georgia,serif; margin:0 0 .32em; color:var(--gold); letter-spacing:-.049em}
+h1 span {display:block; font-size:.43em; color:var(--pale); margin-top:.5em; letter-spacing:.15em}
+button {color:#23160c; border:1px solid var(--gold); border-radius:4px; background:var(--gold); font:700 1rem/1 system-ui,sans-serif; padding:.8rem 1rem; cursor:pointer}
+button:hover:not(:disabled) {background:#f2c387}
+button:disabled {opacity:.43; cursor:default}
+a:focus-visible,button:focus-visible {outline:2px solid white; outline-offset:4px}
+#status {margin:.9rem 0 0; color:#eedbbf; max-width:46ch}
+progress {accent-color:var(--gold); margin-top:1rem; width:min(300px,90%); height:10px}
+.controls {display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:1rem 0 2rem}
+.controls p {font-size:.875rem; color:#c8b9a5; margin:0}
+.controls b {color:#f9ead0; margin-inline:.7rem .2rem}
+.controls b:first-child {margin-inline-start:0}
+#stage:fullscreen {aspect-ratio:auto; width:100%; height:100%; border:0}
+@media(max-width:640px) {header {min-height:52px} header span {display:none} #stage {aspect-ratio:4/3} .controls {align-items:flex-start; flex-direction:column} #status {font-size:.875rem}}
