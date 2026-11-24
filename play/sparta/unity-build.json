@@ -1,9 +1,9 @@
 {
-  "loader": "Build/Sparta-WebGL.loader.js",
+  "loader": "Build/Sparta-WebGL.loader.js?v=0b56f2426d86",
   "config": {
-    "dataUrl": "Build/Sparta-WebGL.data.unityweb",
-    "frameworkUrl": "Build/Sparta-WebGL.framework.js.unityweb",
-    "codeUrl": "Build/Sparta-WebGL.wasm.unityweb",
+    "dataUrl": "Build/Sparta-WebGL.data.unityweb?v=7783acf3c1d6",
+    "frameworkUrl": "Build/Sparta-WebGL.framework.js.unityweb?v=8ae7771b532c",
+    "codeUrl": "Build/Sparta-WebGL.wasm.unityweb?v=dba5fdc4fb4a",
     "companyName": "PHUWADAT",
     "productName": "SPARTA LAST STAND",
     "productVersion": "0.1.0",
